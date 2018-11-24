@@ -14,7 +14,8 @@ namespace AnrixApp.ViewModels
 	{
 		public GroupsPage ()
 		{
-			InitializeComponent ();
-		}
+            InitializeComponent();
+            
+        }
 	}
 }

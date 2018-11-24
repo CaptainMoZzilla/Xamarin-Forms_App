@@ -5,19 +5,19 @@
             x:Class="AnrixApp.Views.MainPage">
 
     <TabbedPage.Children>
-        <NavigationPage Title="Groups" Icon="groups_logo.png">
+        <NavigationPage Title="Groups" Icon="groups_logo.png" BarBackgroundColor="{StaticResource ToolbarColor}">
             <x:Arguments>
                 <views:GroupsPage />
             </x:Arguments>
         </NavigationPage>
-        
-        <NavigationPage Title="Students" Icon="students_logo.png">
+
+        <NavigationPage Title="Students" Icon="students_logo.png" BarBackgroundColor="{StaticResource ToolbarColor}">
             <x:Arguments>
                 <views:StudentsPage />
             </x:Arguments>
         </NavigationPage>
 
-        <NavigationPage Title="In future" Icon="DELETE.png">
+        <NavigationPage Title="In future" Icon="DELETE.png" BarBackgroundColor="{StaticResource ToolbarColor}">
             <x:Arguments>
                 <ContentPage>
                     <Label Text ="In development"/>

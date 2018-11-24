@@ -2,6 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AnrixApp.ViewModels.GroupsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Load info" Priority="1" Order="Secondary" />
+        <ToolbarItem Text="Save info" Priority="2" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"
