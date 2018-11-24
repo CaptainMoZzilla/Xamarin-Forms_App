@@ -3,19 +3,27 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:AnrixApp.ViewModels"
             x:Class="AnrixApp.Views.MainPage">
-    
-    <TabbedPage.Children>
-        <NavigationPage Title="Students">
-            <x:Arguments>
-                <views:StudentsPage />
-            </x:Arguments>
-        </NavigationPage>
 
+    <TabbedPage.Children>
         <NavigationPage Title="Groups" Icon="groups_logo.png">
             <x:Arguments>
                 <views:GroupsPage />
             </x:Arguments>
         </NavigationPage>
+        
+        <NavigationPage Title="Students" Icon="students_logo.png">
+            <x:Arguments>
+                <views:StudentsPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="In future" Icon="DELETE.png">
+            <x:Arguments>
+                <ContentPage>
+                    <Label Text ="In development"/>
+                </ContentPage>
+            </x:Arguments>
+        </NavigationPage>    
         
     </TabbedPage.Children>
 </TabbedPage>
