@@ -23,11 +23,6 @@ namespace AnrixApp.Models
 
         public void Add(Group a) => Groups.Add(a);
 
-        public List<Group> getGroups()
-        {
-            Debug.WriteLine("######################################################");
-            Debug.WriteLine(Groups.Count.ToString());
-            return Groups;
-        }
+        public List<Group> getGroups() => Groups;
     }
 }

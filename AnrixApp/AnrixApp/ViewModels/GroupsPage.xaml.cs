@@ -18,9 +18,6 @@ namespace AnrixApp.ViewModels
 		public GroupsPage ()
 		{
             BindingContext = MockFacultyData.getMockicngFaculty().getGroups();
-            Debug.WriteLine("-----------------------------------------------------------------------------");
-            Debug.WriteLine(MockFacultyData.getMockicngFaculty().getGroups().Count.ToString());
-            Debug.WriteLine("-----------------------------------------------------------------------------");
             InitializeComponent();
         }
     }

@@ -14,7 +14,8 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="groups_icon.png" Margin="4"/>
                                 <Label Text="{Binding NumberOfGroup}"/>
                             </StackLayout>
                         </ViewCell>
