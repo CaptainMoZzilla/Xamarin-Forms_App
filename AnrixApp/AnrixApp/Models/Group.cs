@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace AnrixApp.Models
 {
-    class Group : IEnumerable<Student>
+    public class Group : IEnumerable<Student>
     {
         public string NumberOfGroup { get; set; }
+        public int Course { get; set; }
         List<Student> Students = new List<Student>();
 
-        public Group(string numberOfGroup)
+        public Group(string numberOfGroup, int course)
         {
             NumberOfGroup = numberOfGroup;
+            Course = course;
         }
 
         public IEnumerator<Student> GetEnumerator()
@@ -31,5 +34,9 @@ namespace AnrixApp.Models
             //Students.Remove(a);
         }
         public void Add(Student a) => Students.Add(a);
+        public List<Student> getStudents()
+        {
+            return new List<Student>(Students);
+        }
     }
 }

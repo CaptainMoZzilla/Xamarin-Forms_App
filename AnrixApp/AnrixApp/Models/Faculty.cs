@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace AnrixApp.Models
 {
-    class Faculty : IEnumerable<Group>
+    public class Faculty : IEnumerable<Group>
     {
         public string Name{ get; set; }
         List<Group> Groups = new List<Group>();
@@ -21,5 +22,12 @@ namespace AnrixApp.Models
         }
 
         public void Add(Group a) => Groups.Add(a);
+
+        public List<Group> getGroups()
+        {
+            Debug.WriteLine("######################################################");
+            Debug.WriteLine(Groups.Count.ToString());
+            return Groups;
+        }
     }
 }

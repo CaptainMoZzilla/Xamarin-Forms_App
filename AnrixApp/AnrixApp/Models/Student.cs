@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AnrixApp.Models
 {
-    class Student
+    public class Student
     {
         public Student(string name, string surname, string patronymic, double averageMark, string numberOfGroup)
         {

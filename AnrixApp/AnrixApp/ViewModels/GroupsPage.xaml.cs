@@ -1,5 +1,8 @@
-﻿using System;
+﻿using AnrixApp.Models;
+using AnrixApp.Services;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +17,11 @@ namespace AnrixApp.ViewModels
 	{
 		public GroupsPage ()
 		{
+            BindingContext = MockFacultyData.getMockicngFaculty().getGroups();
+            Debug.WriteLine("-----------------------------------------------------------------------------");
+            Debug.WriteLine(MockFacultyData.getMockicngFaculty().getGroups().Count.ToString());
+            Debug.WriteLine("-----------------------------------------------------------------------------");
             InitializeComponent();
-            
         }
-	}
+    }
 }
