@@ -15,8 +15,17 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
-                                <Image Source="groups_icon.png" Margin="4"/>
-                                <Label Text="{Binding NumberOfGroup}"/>
+                                <Image Source="groups_icon.png"/>
+                                <StackLayout Orientation="Vertical" Padding="0,5,0,20">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Group: " FontSize="Micro" />
+                                        <Label Text="{Binding NumberOfGroup}" FontSize="Micro"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Course: " FontSize="Micro"/>
+                                        <Label Text="{Binding Course}" FontSize="Micro"/>
+                                    </StackLayout>
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
