@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AnrixApp.Models;
+using AnrixApp.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +16,15 @@ namespace AnrixApp.ViewModels
 	{
 		public StudentsPage ()
 		{
+            Group megaGroup = new Group("000", 0); 
+
+            foreach (var temp in MockFacultyData.getMockicngFaculty().getGroups())
+            {
+                foreach (var tempS in temp)
+                    megaGroup.Add(tempS);
+            }
+
+            BindingContext = megaGroup;
 			InitializeComponent ();
 		}
 	}
