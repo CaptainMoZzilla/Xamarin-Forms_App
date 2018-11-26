@@ -2,6 +2,7 @@
 using AnrixApp.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace AnrixApp.ViewModels
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StudentsPage : ContentPage
 	{
+        Group allStudents;
+
 		public StudentsPage ()
 		{
             Group megaGroup = new Group("000", 0); 
@@ -24,8 +27,15 @@ namespace AnrixApp.ViewModels
                     megaGroup.Add(tempS);
             }
 
-            BindingContext = megaGroup;
+            BindingContext = allStudents = megaGroup;
 			InitializeComponent ();
 		}
-	}
+
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var content = e.Item as Student;
+            Debug.WriteLine(content.Name);
+            await Navigation.PushAsync(new StudentDetailPage(content));
+        }
+    }
 }

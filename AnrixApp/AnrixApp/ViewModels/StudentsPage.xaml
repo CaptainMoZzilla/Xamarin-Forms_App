@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
-                <ListView ItemsSource="{Binding .}">
+                <ListView ItemsSource="{Binding .}" ItemTapped="ListView_ItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ImageCell ImageSource="student_face.png" TextColor="Black" Text="{Binding Title}"  Detail="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}">
