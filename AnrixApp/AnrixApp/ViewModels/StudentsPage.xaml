@@ -4,6 +4,10 @@
              x:Class="AnrixApp.ViewModels.StudentsPage"
              Title="All students">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="filter_icon.png" x:Name="FilterButton"  Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>

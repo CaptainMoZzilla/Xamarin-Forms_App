@@ -18,7 +18,7 @@ namespace AnrixApp.ViewModels
 		public GroupsPage ()
 		{
             BindingContext = MockFacultyData.getMockicngFaculty().getGroups();
-            InitializeComponent();
+            InitializeComponent(); //TODO добавить страницу группы 
         }
     }
 }

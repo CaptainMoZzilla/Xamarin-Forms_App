@@ -28,14 +28,24 @@ namespace AnrixApp.ViewModels
             }
 
             BindingContext = allStudents = megaGroup;
-			InitializeComponent ();
-		}
+            InitializeComponent();
+        }
 
         private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var content = e.Item as Student;
             Debug.WriteLine(content.Name);
             await Navigation.PushAsync(new StudentDetailPage(content));
+        }
+
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            var action = await DisplayActionSheet("Sort by", "Back","", "Name [A-Z]", "Name [Z-A]", "Surname [A-Z]", "Surname [Z-A]");
+            Debug.WriteLine("Action: " + action);
+            //picker.SelectedIndexChanged += picker.Se;
+
+
+            //TODO сделать сортировку
         }
     }
 }
