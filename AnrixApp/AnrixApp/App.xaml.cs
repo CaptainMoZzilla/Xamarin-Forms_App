@@ -12,8 +12,6 @@ namespace AnrixApp
         public App()
         {
             InitializeComponent();
-
-
             MainPage = new MainPage();
         }
 

@@ -13,6 +13,7 @@ namespace AnrixApp.Models
             Patronymic = patronymic;
             AverageMark = averageMark;
             NumberOfGroup = numberOfGroup;
+            Title = Name + " " + Surname;
         }
 
         public string Name { get; set; }
@@ -20,6 +21,7 @@ namespace AnrixApp.Models
         public string Patronymic { get; set; }
         public double AverageMark { get; set; }
         public string NumberOfGroup { get; set; }
+        public string Title { get; set; }
 
         public override bool Equals(object obj)
         {

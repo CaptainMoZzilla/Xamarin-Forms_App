@@ -10,34 +10,11 @@
                 <ListView ItemsSource="{Binding .}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell>
-                                <StackLayout
-                                 Orientation="Horizontal"
-                                 Spacing="15">
-
-                                    <StackLayout Padding="5, 0, 0, 0"
-                                         VerticalOptions="Center">
-
-                                        <StackLayout Orientation="Horizontal"
-                                             Spacing="0">
-                                            <Label Text="{Binding Name}"
-                                                FontAttributes="Bold"/>
-
-                                            <Label Text="{Binding Surname,
-                                                StringFormat=' {0:X1}'}" 
-                                                FontAttributes="Bold"/>
-                                        </StackLayout>
-
-                                        <StackLayout Orientation="Horizontal"
-                                             Spacing="0">
-                                            <Label Text="{Binding NumberOfGroup,
-                                                StringFormat='Group: {0:X1}'}"
-                                                FontAttributes="Italic"/>
-
-                                        </StackLayout>
-                                    </StackLayout>
-                                </StackLayout>
-                            </ViewCell>
+                            <ImageCell ImageSource="student_face.png" TextColor="Black" Text="{Binding Title}"  Detail="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}">
+                                <ImageCell.ContextActions>
+                                    <MenuItem Text="Stuur e-mail"></MenuItem>
+                                </ImageCell.ContextActions>
+                            </ImageCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
