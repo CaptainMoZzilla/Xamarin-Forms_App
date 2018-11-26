@@ -14,21 +14,11 @@
             <ListView ItemsSource="{Binding .}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Image Source="groups_icon.png"/>
-                                <StackLayout Orientation="Vertical" Padding="0,5,0,20">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="Group: " FontSize="Micro" />
-                                        <Label Text="{Binding NumberOfGroup}" FontSize="Micro"/>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="Course: " FontSize="Micro"/>
-                                        <Label Text="{Binding Course}" FontSize="Micro"/>
-                                    </StackLayout>
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
+                        <ImageCell ImageSource="groups_icon.png" TextColor="Black" Text="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}"  Detail="{Binding Course, StringFormat='Course: {0:D}'}">
+                            <ImageCell.ContextActions>
+                                <MenuItem Text="Delete"></MenuItem>
+                            </ImageCell.ContextActions>
+                        </ImageCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

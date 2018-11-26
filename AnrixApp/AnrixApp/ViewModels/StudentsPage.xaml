@@ -12,7 +12,7 @@
                         <DataTemplate>
                             <ImageCell ImageSource="student_face.png" TextColor="Black" Text="{Binding Title}"  Detail="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}">
                                 <ImageCell.ContextActions>
-                                    <MenuItem Text="Stuur e-mail"></MenuItem>
+                                    <MenuItem Text="Delete"></MenuItem>
                                 </ImageCell.ContextActions>
                             </ImageCell>
                         </DataTemplate>
