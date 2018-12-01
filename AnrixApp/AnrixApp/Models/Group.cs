@@ -10,7 +10,7 @@ namespace AnrixApp.Models
     {
         public string NumberOfGroup { get; set; }
         public int Course { get; set; }
-        List<Student> Students = new List<Student>();
+        public List<Student> Students = new List<Student>();
 
         public Group(string numberOfGroup, int course)
         {

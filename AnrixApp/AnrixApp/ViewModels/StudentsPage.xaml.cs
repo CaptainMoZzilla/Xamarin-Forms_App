@@ -26,6 +26,12 @@ namespace AnrixApp.ViewModels
                 foreach (var tempS in temp)
                     megaGroup.Add(tempS);
             }
+            megaGroup.Add(new Student("Ведро", "Га га", "gaga",10, "000000"));
+            megaGroup.Add(new Student("Анд", "Ы ы ы ы", "gaga", 10, "7234231213"));
+            megaGroup.Add(new Student("Андрей", "Андрей", "gaga", 10, "7234231213"));
+            megaGroup.Add(new Student("Dada ya", "Андрей", "gaga", 10, "7234231213"));
+            megaGroup.Add(new Student("0000000", "Андрей", "gaga", 10, "7234231213"));
+
 
             BindingContext = allStudents = megaGroup;
             InitializeComponent();
@@ -40,12 +46,25 @@ namespace AnrixApp.ViewModels
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            var action = await DisplayActionSheet("Sort by", "Back","", "Name [A-Z]", "Name [Z-A]", "Surname [A-Z]", "Surname [Z-A]");
+            var action = await DisplayActionSheet("Sort by", "Back","", "Name [A-Z]", "Group [0-9]", "Surname [A-Z]");
             Debug.WriteLine("Action: " + action);
-            //picker.SelectedIndexChanged += picker.Se;
 
+            BindingContext = null;
 
-            //TODO сделать сортировку
+            switch (action.ToString())
+            {
+                case "Name [A-Z]":
+                    BindingContext = SortHelper.SortByName(allStudents); ;
+                    break;
+
+                case "Group [0-9]":
+                    BindingContext = SortHelper.SortBySurname(allStudents); ;
+                    break;
+
+                case "Surname [A-Z]":
+                    BindingContext = SortHelper.SortByGroup(allStudents); ;
+                    break;
+            }
         }
     }
 }

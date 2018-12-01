@@ -11,7 +11,7 @@ namespace AnrixApp.Services
         {
             Faculty faculty = new Faculty { Name = "KSIS" };
 
-            for (int a = 753500; a < 753516; a++)
+            for (int a = 753500; a < 753501; a++)
             {
                 Group group = new Group(a.ToString(), a % 5);
                 for (int b = 0; b < 30; b++)
