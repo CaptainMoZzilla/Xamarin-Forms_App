@@ -2,12 +2,15 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AnrixApp.Views;
+using AnrixApp.Models;
+using AnrixApp.ViewModels;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace AnrixApp
 {
     public partial class App : Application
     {
+        static Faculty faculty = new Faculty();
 
         public App()
         {

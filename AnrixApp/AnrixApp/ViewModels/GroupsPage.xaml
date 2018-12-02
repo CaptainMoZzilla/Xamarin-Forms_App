@@ -5,7 +5,7 @@
              Title="All groups">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Load info" Priority="1" Order="Secondary" />
+        <ToolbarItem Text="Load info" Priority="1" Order="Secondary" Clicked="ToolbarItem_Clicked" />
         <ToolbarItem Text="Save info" Priority="2" Order="Secondary"/>
     </ContentPage.ToolbarItems>
 
