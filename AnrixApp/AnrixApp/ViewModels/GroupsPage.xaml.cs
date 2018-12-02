@@ -44,7 +44,8 @@ namespace AnrixApp.ViewModels
 
         private void ToolbarItem_Clicked_1(object sender, EventArgs e)
         {
-
+            var faculty = MockFacultyData.getMockicngFaculty();
+            OnListUpdated(faculty);
         }
     }
 }

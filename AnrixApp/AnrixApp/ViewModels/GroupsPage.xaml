@@ -6,7 +6,7 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Load info" Priority="1" Order="Secondary" Clicked="ToolbarItem_Clicked" />
-        <ToolbarItem Text="Save info" Priority="2" Order="Secondary" Clicked="ToolbarItem_Clicked_1"/>
+        <ToolbarItem Text="Mock info" Priority="2" Order="Secondary" Clicked="ToolbarItem_Clicked_1"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
