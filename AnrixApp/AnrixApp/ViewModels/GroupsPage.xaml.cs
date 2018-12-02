@@ -14,19 +14,17 @@ namespace AnrixApp.ViewModels
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class GroupsPage : ContentPage
 	{
-        public delegate void FileUploaded(Faculty faculty);
-        public static event FileUploaded OnUpload;
+        public delegate void ListUpdated(Faculty faculty);
+        public static event ListUpdated OnListUpdated;
 
         public GroupsPage ()
 		{
-            BindingContext = MockFacultyData.getMockicngFaculty().getGroups();
-            InitializeComponent();
-            OnUpload += delegate (Faculty faculty)
+            OnListUpdated += delegate (Faculty faculty)
             {
                 BindingContext = null;
                 BindingContext = faculty.getGroups();
             };
-
+            InitializeComponent();        
         }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
@@ -35,30 +33,18 @@ namespace AnrixApp.ViewModels
             {
                 FileData filedata = await CrossFilePicker.Current.PickFile();
                 var faculty = FileReaderService.ReadFromFile(filedata.FilePath);
-                OnUpload(faculty);
+                OnListUpdated(faculty);
 
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
+                await DisplayAlert("Error occur", $"Something go wrong: {ex.Message}", "Back");
             }
         }
 
-        public void setBindingContext(Faculty faculty)
+        private void ToolbarItem_Clicked_1(object sender, EventArgs e)
         {
-            Group megaGroup = new Group("000", 0);
-            BindingContext = null;
-            BindingContext = faculty.getGroups();
-            
-            foreach (var temp in faculty.getGroups())
-            {
-                foreach (var tempS in temp)
-                    megaGroup.Add(tempS);
-            }
 
-            //this.LoadFromXaml(typeof(StudentsPage)).BindingContext = null;
-            this.LoadFromXaml(typeof(StudentsPage)).BindingContext = StudentsPage.allStudents = megaGroup;
-            Debug.WriteLine((this.LoadFromXaml(typeof(StudentsPage)).BindingContext as Group).Students.Count);
         }
     }
 }

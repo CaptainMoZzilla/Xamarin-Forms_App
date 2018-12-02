@@ -26,7 +26,7 @@ namespace AnrixApp.Services
                     var studentSurname = sr.ReadLine();
                     var studentGPA = Convert.ToDouble(sr.ReadLine());
 
-                    tempGroup.Add(new Student(studentName, studentMiddleName, studentSurname, studentGPA, groupNumber));
+                    tempGroup.Add(new Student(studentName, studentSurname, studentMiddleName, studentGPA, groupNumber));
 
                 }
                 faculty.Add(tempGroup);

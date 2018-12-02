@@ -16,7 +16,7 @@ namespace AnrixApp.ViewModels
 		public StudentsPage ()
 		{
             InitializeComponent();
-            GroupsPage.OnUpload += delegate (Faculty faculty)
+            GroupsPage.OnListUpdated += delegate (Faculty faculty)
             {
                 BindingContext = null;
                 Group megaGroup = new Group("000", 0);
@@ -40,20 +40,23 @@ namespace AnrixApp.ViewModels
         {
             var action = await DisplayActionSheet("Sort by", "Back","", "Name [A-Z]", "Group [0-9]", "Surname [A-Z]");
 
-            BindingContext = null;
-            switch (action.ToString())
-            {
-                case "Name [A-Z]":
-                    BindingContext = SortHelper.SortByName(allStudents); ;
-                    break;
+            if (action != null)
+            { 
+                BindingContext = null;
+                switch (action.ToString())
+                {
+                    case "Name [A-Z]":
+                        BindingContext = SortHelper.SortByName(allStudents); ;
+                        break;
 
-                case "Group [0-9]":
-                    BindingContext = SortHelper.SortBySurname(allStudents); ;
-                    break;
+                    case "Surname [A-Z]":
+                        BindingContext = SortHelper.SortBySurname(allStudents); ;
+                        break;
 
-                case "Surname [A-Z]":
-                    BindingContext = SortHelper.SortByGroup(allStudents); ;
-                    break;
+                    case "Group [0-9]":
+                        BindingContext = SortHelper.SortByGroup(allStudents); ;
+                        break;
+                }
             }
         }
     }
