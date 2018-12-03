@@ -3,7 +3,6 @@ using AnrixApp.Services;
 using Plugin.FilePicker;
 using Plugin.FilePicker.Abstractions;
 using System;
-using System.Diagnostics;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -46,6 +45,12 @@ namespace AnrixApp.ViewModels
         {
             var faculty = MockFacultyData.getMockicngFaculty();
             OnListUpdated(faculty);
+        }
+
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var content = e.Item as Group;
+            await Navigation.PushAsync(new StudentsPage(content));
         }
     }
 }

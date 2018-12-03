@@ -29,6 +29,12 @@ namespace AnrixApp.ViewModels
             };
         }
 
+        public StudentsPage(Group group)
+        {
+            InitializeComponent();
+            BindingContext = allStudents = group;
+        }
+
         private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var content = e.Item as Student;
@@ -38,7 +44,7 @@ namespace AnrixApp.ViewModels
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            var action = await DisplayActionSheet("Sort by", "Back","", "Name [A-Z]", "Group [0-9]", "Surname [A-Z]");
+            var action = await DisplayActionSheet("Sort by", "Back","", "Group [0-9]", "Name [A-Z]", "Surname [A-Z]");
 
             if (action != null)
             { 

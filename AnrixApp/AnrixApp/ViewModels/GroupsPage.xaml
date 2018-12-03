@@ -11,7 +11,7 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding .}">
+            <ListView ItemsSource="{Binding .}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ImageCell ImageSource="groups_icon.png" TextColor="Black" Text="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}"  Detail="{Binding Course, StringFormat='Course: {0:D}'}">
