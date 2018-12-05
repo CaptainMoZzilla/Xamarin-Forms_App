@@ -2,21 +2,40 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AnrixApp.Views.SettingsPage"
-             BackgroundColor="#e8eaf6">
+             BackgroundColor="{StaticResource BackgroundColor}">
     
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout BackgroundColor="{StaticResource ToolbarColor}" HeightRequest="30" HorizontalOptions="FillAndExpand">
-                <Label Margin="10,0,0,0" Text="Student's Page" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
+            <StackLayout x:Name="BasicSettingsStack">
+                <StackLayout BackgroundColor="{StaticResource ToolbarColor}" HeightRequest="30" HorizontalOptions="FillAndExpand">
+                    <Label Margin="10,5,0,0" Text="Basic UI" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
+                </StackLayout>
+                
+                <StackLayout Padding="10">
+                    <Label Text="{Binding Source={x:Reference FontSlider},Path=Value, StringFormat='Font size: {0:F0}'}"/>
+                    <Slider Margin="10,0,10,0" ThumbColor="{StaticResource ToolbarColor}" x:Name="FontSlider"  Maximum="10"/>
+                </StackLayout>
+                        
+                <BoxView BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+
+            </StackLayout>
+
+            <StackLayout x:Name="StudentsPageStack">
+                <StackLayout BackgroundColor="{StaticResource ToolbarColor}" HeightRequest="30" HorizontalOptions="FillAndExpand">
+                    <Label Margin="10,5,0,0" Text="Student's Page" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Padding="10" x:Name="SearchLine_Stack">
+                        <Label Text="Search line" TextColor="Black" />
+                        <Label Text="Important! This can kill all design :D" FontSize="Small" TextColor="Gray"/>
+                    </StackLayout>
+                    <Switch Margin="40,0,0,0" x:Name="Toggle" Toggled="Switch_Toggled"/>
+                </StackLayout>
+
+                <BoxView BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
             
-            <StackLayout Orientation="Horizontal">
-                <StackLayout Padding="10">
-                    <Label Text="Search on students page" TextColor="Black"/>
-                    <Label Text="Important! This can kill all design :D" FontSize="Small" TextColor="Gray"/>
-                </StackLayout>
-                <Switch Margin="40,0,0,0"/>
-            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

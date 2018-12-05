@@ -5,6 +5,7 @@ using System.Diagnostics;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.Settings;
 
 namespace AnrixApp.ViewModels
 {
@@ -12,6 +13,7 @@ namespace AnrixApp.ViewModels
 	public partial class StudentsPage : ContentPage
 	{
         public static Group allStudents;
+        public static string IsSearchVisible = "false";
 
 		public StudentsPage ()
 		{
@@ -25,8 +27,14 @@ namespace AnrixApp.ViewModels
                     foreach (var tempS in temp)
                         megaGroup.Add(tempS);
                 }
+               
                 BindingContext = allStudents = megaGroup;
             };
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SearchBarStudents.IsVisible = bool.Parse(CrossSettings.Current.GetValueOrDefault("IsSearchBarisVisible", "false"));
         }
 
         public StudentsPage(Group group)

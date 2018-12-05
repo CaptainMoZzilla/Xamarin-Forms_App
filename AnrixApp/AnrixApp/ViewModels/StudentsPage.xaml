@@ -7,22 +7,21 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="filter_icon.png" x:Name="FilterButton"  Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
-    
+
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout>
-                <ListView x:Name="StudentsList" ItemsSource="{Binding .}" ItemTapped="ListView_ItemTapped">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ImageCell ImageSource="student_face.png" TextColor="Black" Text="{Binding Title}"  Detail="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}">
-                                <ImageCell.ContextActions>
-                                    <MenuItem Text="Delete"></MenuItem>
-                                </ImageCell.ContextActions>
-                            </ImageCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
+            <SearchBar x:Name="SearchBarStudents"/>
+            <ListView x:Name="StudentsList" ItemsSource="{Binding .}" ItemTapped="ListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell ImageSource="student_face.png" TextColor="Black" Text="{Binding Title}"  Detail="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}">
+                            <ImageCell.ContextActions>
+                                <MenuItem Text="Delete"></MenuItem>
+                            </ImageCell.ContextActions>
+                        </ImageCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
