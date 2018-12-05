@@ -2,7 +2,8 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:AnrixApp.ViewModels"
-            x:Class="AnrixApp.Views.MainPage">
+            x:Class="AnrixApp.Views.MainPage"
+            BackgroundColor="#e8eaf6">
 
     <TabbedPage.Children>
         <NavigationPage Title="Groups" Icon="groups_logo.png" BarBackgroundColor="{StaticResource ToolbarColor}">

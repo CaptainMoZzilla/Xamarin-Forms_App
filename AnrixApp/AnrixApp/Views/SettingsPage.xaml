@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AnrixApp.Views.SettingsPage"
+             BackgroundColor="#e8eaf6">
+    
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout BackgroundColor="{StaticResource ToolbarColor}" HeightRequest="30" HorizontalOptions="FillAndExpand">
+                <Label Margin="10,0,0,0" Text="Student's Page" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+                <StackLayout Padding="10">
+                    <Label Text="Search on students page" TextColor="Black"/>
+                    <Label Text="Important! This can kill all design :D" FontSize="Small" TextColor="Gray"/>
+                </StackLayout>
+                <Switch Margin="40,0,0,0"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
