@@ -18,6 +18,7 @@ namespace AnrixApp.ViewModels
 	{
         public delegate void ListUpdated(Faculty faculty);
         public static event ListUpdated OnListUpdated;
+        public static Faculty Faculty;
 
         public GroupsPage ()
 		{
@@ -34,12 +35,9 @@ namespace AnrixApp.ViewModels
             try
             {
                 FileData filedata = await CrossFilePicker.Current.PickFile();
-                var faculty = FileReaderService.ReadFromFile(filedata.FilePath);
+                Faculty = FileReaderService.ReadFromFile(filedata.FilePath);
 
-                await CrossFilePicker.Current.SaveFile(filedata);
-
-                OnListUpdated(faculty);
-
+                OnListUpdated(Faculty);
             }
             catch (Exception ex)
             {
@@ -49,13 +47,8 @@ namespace AnrixApp.ViewModels
 
         private void ToolbarItem_Clicked_1(object sender, EventArgs e)
         {
-            var faculty = MockFacultyData.getMockicngFaculty();
-            OnListUpdated(faculty);
-        }
-
-        private async void ToolbarItem_Clicked_2(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new SettingsPage());
+            Faculty = MockFacultyData.getMockicngFaculty();
+            OnListUpdated(Faculty);
         }
 
         private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -63,5 +56,7 @@ namespace AnrixApp.ViewModels
             var content = e.Item as Group;
             await Navigation.PushAsync(new StudentsPage(content));
         }
+
+        public static void UpdateList(Faculty faculty) => OnListUpdated(faculty);
     }
 }

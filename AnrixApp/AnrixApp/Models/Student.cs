@@ -20,6 +20,7 @@ namespace AnrixApp.Models
         public double AverageMark { get; set; }
         public string NumberOfGroup { get; set; }
         public string Title { get; set; }
+        public string PhotoUrl { get; set; }
 
         public override bool Equals(object obj)
         {

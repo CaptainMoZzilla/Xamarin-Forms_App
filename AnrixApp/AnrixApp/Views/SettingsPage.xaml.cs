@@ -29,6 +29,7 @@ namespace AnrixApp.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            Toggle.IsToggled = bool.Parse(CrossSettings.Current.GetValueOrDefault("IsSearchBarisVisible", "false"));
         }
 
         private void Switch_Toggled(object sender, ToggledEventArgs e)

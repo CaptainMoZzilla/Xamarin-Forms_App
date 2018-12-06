@@ -14,17 +14,14 @@
 
         <NavigationPage Title="Students" Icon="students_logo.png" BarBackgroundColor="{StaticResource ToolbarColor}">
             <x:Arguments>
-                <views:StudentsPage />
+                <views:StudentsPage/>
             </x:Arguments>
         </NavigationPage>
 
         <NavigationPage Title="In future" Icon="DELETE.png" BarBackgroundColor="{StaticResource ToolbarColor}">
             <x:Arguments>
-                <ContentPage>
-                    <Label Text ="In development"/>
-                </ContentPage>
+                <views:StatisticPage/>
             </x:Arguments>
-        </NavigationPage>    
-        
+        </NavigationPage>   
     </TabbedPage.Children>
 </TabbedPage>

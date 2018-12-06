@@ -26,15 +26,8 @@ namespace AnrixApp.Models
             return ((IEnumerable<Student>)Students).GetEnumerator();
         }
 
-        public void Remove(Student a)
-        {
-            throw new NotSupportedException();
-            //Students.Remove(a);
-        }
+        public void Remove(Student a) => Students.Remove(a);
         public void Add(Student a) => Students.Add(a);
-        public List<Student> getStudents()
-        {
-            return new List<Student>(Students);
-        }
+        public List<Student> getStudents()  => new List<Student>(Students);
     }
 }

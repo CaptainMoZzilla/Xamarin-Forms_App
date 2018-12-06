@@ -1,27 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="AnrixApp.ViewModels.StudentDetailPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="basket.png" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" >
-            <Image Source="big_student_face.png" HorizontalOptions="Center" Margin="5"/>
+            <ffimageloading:CachedImage HorizontalOptions="Center" 
+                    WidthRequest="300" HeightRequest="300"
+		        	DownsampleToViewSize="true"
+		        	Source = "https://xamarin.com/content/images/pages/forms/example-app.png">
+            </ffimageloading:CachedImage>
             <Label Text="{Binding Title}" FontSize="Large" TextColor="Black" HorizontalOptions="Center"/>
             <Label Text="{Binding Patronymic}" FontSize="Large" TextColor="Black" HorizontalOptions="Center"/>
 
-            <Grid HorizontalOptions="Center">
+            <Grid HorizontalOptions="Center" Padding="20,40,20,0" ColumnSpacing="1" RowSpacing="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="Mark" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"/>
-                <Label Text="{Binding AverageMark}" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
+                <Label Text="Mark" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
+                <Label Text="{Binding AverageMark}" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
 
-                <Label Text="Group" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
-                <Label Text="{Binding NumberOfGroup}" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
+                <Label Text="Group" Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
+                <Label Text="{Binding NumberOfGroup}" Grid.Row="1" Grid.Column="1" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

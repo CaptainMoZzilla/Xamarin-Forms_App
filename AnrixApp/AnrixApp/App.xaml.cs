@@ -1,9 +1,7 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AnrixApp.Views;
 using AnrixApp.Models;
-using AnrixApp.ViewModels;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace AnrixApp
@@ -16,6 +14,7 @@ namespace AnrixApp
         {
             InitializeComponent();
             MainPage = new MainPage();
+            
         }
 
         protected override void OnStart()
