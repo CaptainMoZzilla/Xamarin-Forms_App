@@ -1,9 +1,7 @@
 ﻿using AnrixApp.Models;
 using AnrixApp.Services;
-using AnrixApp.Views;
 using Plugin.FilePicker;
 using Plugin.FilePicker.Abstractions;
-using Plugin.Settings;
 using System;
 
 

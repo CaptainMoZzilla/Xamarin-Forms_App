@@ -16,7 +16,7 @@ namespace AnrixApp.Services
                 Group group = new Group(a.ToString(), a % 5);
                 for (int b = 0; b < 30; b++)
                 {
-                    group.Add(new Student("Даниил", "Бережнов", "Эйнштенович", 10, a.ToString()));
+                    group.Add(new Student("Даниил", "Бережнов", "Эйнштенович", 10, a.ToString(), ""));
 
                 }
                 faculty.Add(group);

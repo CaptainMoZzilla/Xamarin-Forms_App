@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace AnrixApp.Models
 {
     public class Student
     {
-        public Student(string name, string surname, string patronymic, double averageMark, string numberOfGroup)
+        public Student(string name, string surname, string patronymic, double averageMark, string numberOfGroup, string photoUrl)
         {
             Name = name;
             Surname = surname;
@@ -12,6 +13,8 @@ namespace AnrixApp.Models
             AverageMark = averageMark;
             NumberOfGroup = numberOfGroup;
             Title = Name + " " + Surname;
+            Debug.WriteLine(Title);
+            PhotoUrl = photoUrl;
         }
 
         public string Name { get; set; }

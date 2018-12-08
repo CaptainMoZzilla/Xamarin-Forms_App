@@ -11,7 +11,7 @@
     <ContentPage.Content>
         <StackLayout>
             <SearchBar x:Name="SearchBarStudents" TextChanged="SearchBarStudents_TextChanged"/>
-            <ListView  x:Name="StudentsList" SelectionMode="None" ItemsSource="{Binding .}" ItemTapped="ListView_ItemTapped">
+            <ListView CachingStrategy="RecycleElement" x:Name="StudentsList" SelectionMode="None" ItemsSource="{Binding .}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ImageCell ImageSource="student_face.png" TextColor="Black" Text="{Binding Title}"  Detail="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}">

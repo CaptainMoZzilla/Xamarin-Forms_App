@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.180" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.4.859" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.4.859" />

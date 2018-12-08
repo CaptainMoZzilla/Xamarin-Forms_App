@@ -26,11 +26,17 @@ namespace AnrixApp.Services
                     var studentSurname = sr.ReadLine();
                     var studentGPA = Convert.ToDouble(sr.ReadLine());
 
-                    tempGroup.Add(new Student(studentName, studentSurname, studentMiddleName, studentGPA, groupNumber));
+                    var url = sr.ReadLine();
+                    var studentPhotoUrl = url.Length > 0 ? url : "big_student_face.png";
+
+                    tempGroup.Add(new Student(studentName, studentSurname, studentMiddleName, studentGPA, groupNumber, studentPhotoUrl));
 
                 }
                 faculty.Add(tempGroup);
             }
+
+            sr.Close();
+            fs.Close();
 
             return faculty;
         }
