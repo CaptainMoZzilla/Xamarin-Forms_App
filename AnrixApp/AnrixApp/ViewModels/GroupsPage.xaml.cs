@@ -42,12 +42,6 @@ namespace AnrixApp.ViewModels
             }
         }
 
-        private void ToolbarItem_Clicked_1(object sender, EventArgs e)
-        {
-            GlobalFaculty = MockFacultyData.getMockicngFaculty();
-            OnListUpdated(GlobalFaculty);
-        }
-
         private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var content = e.Item as Group;

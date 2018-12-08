@@ -1,24 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="AnrixApp.ViewModels.GroupsPage"
              Title="All groups">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Load info" Priority="1" Order="Secondary" Clicked="ToolbarItem_Clicked" />
-        <ToolbarItem Text="Mock info" Priority="2" Order="Secondary" Clicked="ToolbarItem_Clicked_1"/>
+        <ToolbarItem Text="Mock info" Priority="2" Order="Secondary"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding .}" ItemTapped="ListView_ItemTapped">
+            <ListView  RowHeight="70" x:Name="StudentsList" SelectionMode="None" ItemsSource="{Binding .}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell ImageSource="{Binding PhotoUrl}" TextColor="Black" Text="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}"  Detail="{Binding Course, StringFormat='Course: {0:D}'}">
-                            <ImageCell.ContextActions>
-                                <MenuItem Text="Delete"></MenuItem>
-                            </ImageCell.ContextActions>
-                        </ImageCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <ffimageloading:CachedImage HorizontalOptions="Center"
+                                             Margin="5"
+		        	                         Source = "groups_icon.png">
+                                    <ffimageloading:CachedImage.Transformations>
+                                        <fftransformations:CircleTransformation />
+                                    </ffimageloading:CachedImage.Transformations>
+                                </ffimageloading:CachedImage>
+                                <StackLayout Orientation="Vertical">
+                                    <Label  TextColor="Black" Text="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}"  
+                                                   Margin="0,5,0,0" FontSize="Medium" HorizontalOptions="StartAndExpand" />
+                                    <Label Text="{Binding Course, StringFormat='Course: {0:D}'}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
