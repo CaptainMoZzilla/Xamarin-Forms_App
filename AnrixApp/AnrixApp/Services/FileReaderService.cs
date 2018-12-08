@@ -1,6 +1,7 @@
 ﻿using AnrixApp.Models;
 using System;
 using System.IO;
+using Xamarin.Forms;
 
 namespace AnrixApp.Services
 {
@@ -30,7 +31,7 @@ namespace AnrixApp.Services
                     var studentPhotoUrl = url.Length > 0 ? url : "big_student_face.png";
 
                     tempGroup.Add(new Student(studentName, studentSurname, studentMiddleName, studentGPA, groupNumber, studentPhotoUrl));
-
+                    
                 }
                 faculty.Add(tempGroup);
             }

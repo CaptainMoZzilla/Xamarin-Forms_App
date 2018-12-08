@@ -42,5 +42,23 @@ namespace AnrixApp.Models
             }
             return megaGroup;
         }
+        public Faculty() { }
+
+        public Faculty(List<Student> megaGroup)
+        {
+            int index = -1;
+            string tempNum = null;
+            
+            foreach(var student in megaGroup)
+            {
+                if (!student.NumberOfGroup.Equals(tempNum))
+                {
+                    tempNum = student.NumberOfGroup;
+                    Groups.Add(new Group(student.NumberOfGroup, student.NumberOfGroup[0] - '0' - 5));
+                    index++;
+                }
+                Groups[index].Add(student);
+            }
+        }
     }
 }

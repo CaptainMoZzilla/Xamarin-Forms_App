@@ -3,11 +3,9 @@ using AnrixApp.Services;
 using Plugin.FilePicker;
 using Plugin.FilePicker.Abstractions;
 using System;
-
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 
 namespace AnrixApp.ViewModels
 {
@@ -16,14 +14,15 @@ namespace AnrixApp.ViewModels
 	{
         public delegate void ListUpdated(Faculty faculty);
         public static event ListUpdated OnListUpdated;
-        public static Faculty Faculty;
+        public static Faculty GlobalFaculty;
 
         public GroupsPage ()
 		{
             OnListUpdated += delegate (Faculty faculty)
             {
-                BindingContext = null;
-                BindingContext = faculty.getGroups();
+               BindingContext = null;
+               GlobalFaculty = faculty;
+               BindingContext = faculty.getGroups();
             };
             InitializeComponent();        
         }
@@ -33,9 +32,9 @@ namespace AnrixApp.ViewModels
             try
             {
                 FileData filedata = await CrossFilePicker.Current.PickFile();
-                Faculty = FileReaderService.ReadFromFile(filedata.FilePath);
+                GlobalFaculty = FileReaderService.ReadFromFile(filedata.FilePath);
 
-                OnListUpdated(Faculty);
+                OnListUpdated(GlobalFaculty);
             }
             catch (Exception ex)
             {
@@ -45,8 +44,8 @@ namespace AnrixApp.ViewModels
 
         private void ToolbarItem_Clicked_1(object sender, EventArgs e)
         {
-            Faculty = MockFacultyData.getMockicngFaculty();
-            OnListUpdated(Faculty);
+            GlobalFaculty = MockFacultyData.getMockicngFaculty();
+            OnListUpdated(GlobalFaculty);
         }
 
         private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)

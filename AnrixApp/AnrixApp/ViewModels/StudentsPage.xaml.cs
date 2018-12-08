@@ -43,7 +43,7 @@ namespace AnrixApp.ViewModels
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            var action = await DisplayActionSheet("Sort by", "Back","", "Group [0-9]", "Name [A Z]", "Surname [A-Z]");
+            var action = await DisplayActionSheet("Sort by", "Back","", "Group [0-9]", "Name [A-Z]", "Surname [A-Z]");
 
             if (action != null)
             { 

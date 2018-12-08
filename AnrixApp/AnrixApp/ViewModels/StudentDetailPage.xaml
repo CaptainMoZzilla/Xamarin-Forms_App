@@ -6,6 +6,7 @@
              x:Class="AnrixApp.ViewModels.StudentDetailPage">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="share_icon.png" Clicked="ToolbarItem_Clicked_1"/>
         <ToolbarItem Icon="basket.png" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
@@ -14,7 +15,8 @@
             <StackLayout Orientation="Vertical">
                 <ffimageloading:CachedImage HorizontalOptions="Center" 
 		                HeightRequest="150" WidthRequest="150"
-		        	    Source = "{Binding PhotoUrl}">
+		        	    Source = "{Binding PhotoUrl}"
+                        Margin="10">
                     <ffimageloading:CachedImage.Transformations>
                         <fftransformations:CircleTransformation />
                     </ffimageloading:CachedImage.Transformations>
@@ -36,7 +38,7 @@
                 <Label Text="{Binding Title}" FontSize="Large" TextColor="Black" HorizontalOptions="Center"/>
                 <Label Text="{Binding Patronymic}" FontSize="Large" TextColor="Black" HorizontalOptions="Center"/>
 
-                <Grid HorizontalOptions="Center" Padding="20,40,20,0" ColumnSpacing="1" RowSpacing="1">
+                <Grid HorizontalOptions="Center" Padding="20,20,20,0" ColumnSpacing="1" RowSpacing="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>

@@ -15,7 +15,7 @@
 
                 <StackLayout Padding="10">
                     <Label Text="{Binding Source={x:Reference FontSlider},Path=Value, StringFormat='Font size: {0:F0}'}" TextColor="Black"/>
-                    <Slider Margin="10,0,10,0" BackgroundColor="{StaticResource ToolbarColor}" ThumbColor="{StaticResource ToolbarColor}" x:Name="FontSlider" Maximum="10"/>
+                    <Slider Margin="10,0,10,0" ThumbColor="{StaticResource ToolbarColor}" x:Name="FontSlider" Maximum="10"/>
                 </StackLayout>
                 <BoxView BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
 
@@ -31,12 +31,11 @@
                         <Label Text="Search line" TextColor="Black" />
                         <Label Text="Important! This can kill all design :D" FontSize="Small" TextColor="Gray"/>
                     </StackLayout>
-                    <Switch Margin="40,0,0,0" x:Name="Toggle" OnColor="{StaticResource ToolbarColor}" Toggled="Switch_Toggled"/>
+                    <Switch Margin="40,0,0,0" x:Name="Toggle" Toggled="Switch_Toggled"/>
                 </StackLayout>
 
                 <BoxView BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

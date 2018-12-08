@@ -13,7 +13,6 @@ namespace AnrixApp.Models
             AverageMark = averageMark;
             NumberOfGroup = numberOfGroup;
             Title = Name + " " + Surname;
-            Debug.WriteLine(Title);
             PhotoUrl = photoUrl;
         }
 
