@@ -8,7 +8,6 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Load info" Priority="1" Order="Secondary" Clicked="ToolbarItem_Clicked" />
-        <ToolbarItem Text="Mock info" Priority="2" Order="Secondary"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -27,8 +26,8 @@
                                 </ffimageloading:CachedImage>
                                 <StackLayout Orientation="Vertical">
                                     <Label  TextColor="Black" Text="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}"  
-                                                   Margin="0,5,0,0" FontSize="Medium" HorizontalOptions="StartAndExpand" />
-                                    <Label Text="{Binding Course, StringFormat='Course: {0:D}'}"/>
+                                                   Margin="0,7,0,0" FontSize="Medium" HorizontalOptions="StartAndExpand" />
+                                    <Label Margin="0,7,0,0" Text="{Binding Course, StringFormat='Course: {0:D}'}"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

@@ -1,19 +1,20 @@
 ﻿using Plugin.Settings;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace AnrixApp.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SettingsPage : ContentPage
 	{
+        public delegate void ColorUpdated(Color color);
+        public static event ColorUpdated BarColorUpdated;
+
+        private List<string> MainColor = new List<string> { "#3f51b5", "#800080", "#fd6571", "#2cb42c", "#5c6298" };
+
 		public SettingsPage ()
 		{
 			InitializeComponent ();
@@ -25,16 +26,44 @@ namespace AnrixApp.Views
                 Toggle.IsToggled = !Toggle.IsToggled;
             };
             SearchLine_Stack.GestureRecognizers.Add(gestureREcognizer);
+
+            BarColorUpdated += delegate (Color color)
+            {
+                FontSlider.ThumbColor = color;
+
+                Separator1.Color = color;
+                Separator2.Color = color;
+
+                Stack1.BackgroundColor = color;
+                Stack2.BackgroundColor = color;
+            };
+
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
             Toggle.IsToggled = bool.Parse(CrossSettings.Current.GetValueOrDefault("IsSearchBarisVisible", "false"));
-        }
+            var color = Color.FromHex(CrossSettings.Current.GetValueOrDefault("Color", "000000"));
+
+            FontSlider.ThumbColor = color;
+
+            Separator1.Color = color;
+            Separator2.Color = color;
+
+            Stack1.BackgroundColor = color;
+            Stack2.BackgroundColor = color;
+        }               
 
         private void Switch_Toggled(object sender, ToggledEventArgs e)
         {
             CrossSettings.Current.AddOrUpdateValue("IsSearchBarisVisible", e.Value.ToString());
+        }
+
+        private void FontSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            CrossSettings.Current.AddOrUpdateValue("Color", MainColor[Convert.ToInt32(e.NewValue)]);
+            CrossSettings.Current.AddOrUpdateValue("ColorVal", e.NewValue);
+            BarColorUpdated(Color.FromHex(MainColor[Convert.ToInt32(e.NewValue)]));
         }
     }
 }

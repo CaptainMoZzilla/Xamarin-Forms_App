@@ -3,8 +3,11 @@ using AnrixApp.Services;
 using Plugin.FilePicker;
 using Plugin.FilePicker.Abstractions;
 using System;
+using System.Diagnostics;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace AnrixApp.ViewModels
@@ -49,5 +52,12 @@ namespace AnrixApp.ViewModels
         }
 
         public static void UpdateList(Faculty faculty) => OnListUpdated(faculty);
+
+        private void ToolbarItem_Clicked_1(object sender, EventArgs e)
+        {
+           // var javafile = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads);
+            //Debug.WriteLine(KnownFolders);
+            
+        }
     }
 }

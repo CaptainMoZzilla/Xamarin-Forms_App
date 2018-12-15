@@ -10,11 +10,7 @@
             <Color x:Key="NavigationPrimary">#3f51b5</Color>
             <Color x:Key="ToolbarColor">#3f51b5</Color>
             <Color x:Key="BackgroundColor">#e8eaf6</Color>
-            
-            <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
-                <Setter Property="BarTextColor" Value="White" />
-            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
     
