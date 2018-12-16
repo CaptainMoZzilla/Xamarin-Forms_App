@@ -18,10 +18,18 @@
             </x:Arguments>
         </NavigationPage>
 
-        <NavigationPage x:Name="Page3" Title="In future" Icon="DELETE.png" BarBackgroundColor="{StaticResource ToolbarColor}">
+        <NavigationPage x:Name="Page3" Title="Statistic" Icon="statistics_icon.png" BarBackgroundColor="{StaticResource ToolbarColor}">
             <x:Arguments>
                 <views:StatisticPage/>
             </x:Arguments>
-        </NavigationPage>   
+        </NavigationPage>
+
+        <NavigationPage x:Name="Page4" Title="Telegram bot" Icon="bot_icon.png" BarBackgroundColor="{StaticResource ToolbarColor}">
+            <x:Arguments>
+                <ContentPage>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="HI,im your bot" FontSize="Large"/>
+                </ContentPage>
+            </x:Arguments>
+        </NavigationPage>
     </TabbedPage.Children>
 </TabbedPage>

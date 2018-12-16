@@ -33,9 +33,11 @@ namespace AnrixApp.Views
 
                 Separator1.Color = color;
                 Separator2.Color = color;
+                Separator3.Color = color;
 
                 Stack1.BackgroundColor = color;
                 Stack2.BackgroundColor = color;
+                Stack3.BackgroundColor = color;
             };
 
         }
@@ -43,15 +45,18 @@ namespace AnrixApp.Views
         {
             base.OnAppearing();
             Toggle.IsToggled = bool.Parse(CrossSettings.Current.GetValueOrDefault("IsSearchBarisVisible", "false"));
+            BotToggle.IsToggled = bool.Parse(CrossSettings.Current.GetValueOrDefault("IsBotEnabled", "false"));
             var color = Color.FromHex(CrossSettings.Current.GetValueOrDefault("Color", "000000"));
 
             FontSlider.ThumbColor = color;
 
             Separator1.Color = color;
             Separator2.Color = color;
+            Separator3.Color = color;
 
             Stack1.BackgroundColor = color;
             Stack2.BackgroundColor = color;
+            Stack3.BackgroundColor = color;
         }               
 
         private void Switch_Toggled(object sender, ToggledEventArgs e)
@@ -64,6 +69,12 @@ namespace AnrixApp.Views
             CrossSettings.Current.AddOrUpdateValue("Color", MainColor[Convert.ToInt32(e.NewValue)]);
             CrossSettings.Current.AddOrUpdateValue("ColorVal", e.NewValue);
             BarColorUpdated(Color.FromHex(MainColor[Convert.ToInt32(e.NewValue)]));
+        }
+
+        private void BotToggle_Toggled(object sender, ToggledEventArgs e)
+        {
+            CrossSettings.Current.AddOrUpdateValue("IsBotEnabled", e.Value.ToString());
+            Services.TelegramBot.TelegramBot_OnRecievingUpdate(e.Value);
         }
     }
 }

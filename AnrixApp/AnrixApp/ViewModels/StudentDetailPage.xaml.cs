@@ -39,7 +39,7 @@ namespace AnrixApp.ViewModels
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            var a = GroupsPage.GlobalFaculty;
+            var a = GlobalFaculty;
             popupImageView.IsVisible = false;
             CurrentStudent.PhotoUrl = UserLink.Text != null ? UserLink.Text : "big_student_face.png";
 
@@ -47,6 +47,7 @@ namespace AnrixApp.ViewModels
             BindingContext = null;
             BindingContext = CurrentStudent;
             UpdateList(a);
+
         }
 
         private async void ToolbarItem_Clicked_1(object sender, EventArgs e)

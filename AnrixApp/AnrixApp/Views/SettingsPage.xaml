@@ -35,6 +35,22 @@
 
                 <BoxView x:Name="Separator2" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
+
+            <StackLayout x:Name="BotsSettings">
+                <StackLayout x:Name="Stack3" BackgroundColor="{StaticResource ToolbarColor}" HeightRequest="30" HorizontalOptions="FillAndExpand">
+                    <Label Margin="10,5,0,0" Text="Telegram bot" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Padding="10" x:Name="BotsSettings_Stack">
+                        <Label Text="Start recieving" TextColor="Black" />
+                        <Label Text="This increase battery consumption " FontSize="Small" TextColor="Gray"/>
+                    </StackLayout>
+                    <Switch Margin="40,0,0,0" x:Name="BotToggle" Toggled="BotToggle_Toggled"/>
+                </StackLayout>
+
+                <BoxView x:Name="Separator3" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

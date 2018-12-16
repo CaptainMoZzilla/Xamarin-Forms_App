@@ -5,6 +5,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.Settings;
+using static AnrixApp.Services.TelegramBot;
 
 namespace AnrixApp.ViewModels
 {

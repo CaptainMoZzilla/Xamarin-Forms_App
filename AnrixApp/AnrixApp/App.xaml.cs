@@ -28,7 +28,10 @@ namespace AnrixApp
             string list = CrossSettings.Current.GetValueOrDefault("Faculty", "null");
             if (!"null".Equals(list))
                 UpdateList(new Faculty(JsonConvert.DeserializeObject<List<Student>>(list)));
-         
+
+            TelegramBot.TelegramBot_OnRecievingUpdate(bool.Parse(CrossSettings.
+                Current.GetValueOrDefault("IsBotEnabled", "false")));
+
             OnListUpdated += delegate (Faculty faculty2)
             {
                 faculty = faculty2;

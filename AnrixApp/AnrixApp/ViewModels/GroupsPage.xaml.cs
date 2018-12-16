@@ -3,11 +3,7 @@ using AnrixApp.Services;
 using Plugin.FilePicker;
 using Plugin.FilePicker.Abstractions;
 using System;
-using System.Diagnostics;
-using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
-using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace AnrixApp.ViewModels
