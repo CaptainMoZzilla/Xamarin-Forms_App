@@ -29,12 +29,14 @@ namespace AnrixApp.Services
 
         public static Group Search(Group group, string phrase)
         {
-            if (group != null && group.Students != null) {  
-                Group temp = new Group("000", 0); 
-                temp.Students = group.Students.Where(s => s.Name.ToLower().Contains(phrase.ToLower()) ||
-                                               s.Surname.ToLower().Contains(phrase.ToLower()) ||
-                                               s.NumberOfGroup.Contains(phrase))
-                                              .ToList();
+            if (group != null && group.Students != null) {
+                Group temp = new Group("000", 0)
+                {
+                    Students = group.Students.Where(s => s.Name.ToLower().Contains(phrase.ToLower()) ||
+                                                   s.Surname.ToLower().Contains(phrase.ToLower()) ||
+                                                   s.NumberOfGroup.Contains(phrase))
+                                              .ToList()
+                };
                 return temp;
             } else
             {

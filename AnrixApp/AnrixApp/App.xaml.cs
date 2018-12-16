@@ -35,7 +35,7 @@ namespace AnrixApp
             OnListUpdated += delegate (Faculty faculty2)
             {
                 faculty = faculty2;
-                CrossSettings.Current.AddOrUpdateValue("Faculty", JsonConvert.SerializeObject(faculty2.getMegaGroup().getStudents(), Formatting.Indented));
+                CrossSettings.Current.AddOrUpdateValue("Faculty", JsonConvert.SerializeObject(faculty2.GetMegaGroup().getStudents(), Formatting.Indented));
             };
         }
 

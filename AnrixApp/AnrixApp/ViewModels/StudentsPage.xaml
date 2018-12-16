@@ -13,7 +13,7 @@
     <ContentPage.Content>
         <StackLayout>
             <SearchBar x:Name="SearchBarStudents" TextChanged="SearchBarStudents_TextChanged"/>
-            <ListView  RowHeight="70" x:Name="StudentsList" SelectionMode="None" ItemsSource="{Binding .}" ItemTapped="ListView_ItemTapped">
+            <ListView CachingStrategy="RetainElement" RowHeight="70" x:Name="StudentsList" SelectionMode="None" ItemsSource="{Binding .}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -28,7 +28,7 @@
                                 <StackLayout Orientation="Vertical">
                                     <Label Text="{Binding Title}" TextColor="Black" 
                                                    Margin="0,7,0,0" FontSize="Medium" HorizontalOptions="StartAndExpand" />
-                                    <Label Margin="0,7,0,0" Text="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}"/>
+                                    <Label Margin="0,10,0,0" Text="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

@@ -2,6 +2,7 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:AnrixApp.ViewModels"
+            xmlns:views1="clr-namespace:AnrixApp.Views"
             x:Class="AnrixApp.Views.MainPage"
             BackgroundColor="#e8eaf6">
 
@@ -26,9 +27,7 @@
 
         <NavigationPage x:Name="Page4" Title="Telegram bot" Icon="bot_icon.png" BarBackgroundColor="{StaticResource ToolbarColor}">
             <x:Arguments>
-                <ContentPage>
-                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="HI,im your bot" FontSize="Large"/>
-                </ContentPage>
+                <views1:BotsPage/>
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>

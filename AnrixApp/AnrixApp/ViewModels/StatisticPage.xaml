@@ -4,11 +4,6 @@
              x:Class="AnrixApp.ViewModels.StatisticPage"
              Title="Statistic">
 
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="settings_icon.png" Clicked="ToolbarItem_Clicked"/>
-    </ContentPage.ToolbarItems>
-
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"

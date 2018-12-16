@@ -1,6 +1,5 @@
 ﻿using AnrixApp.Models;
 using System;
-using System.Diagnostics;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,17 +15,12 @@ namespace AnrixApp.ViewModels
 		{
             BindingContext = student;
             CurrentStudent = student;
-            try { 
-		    	InitializeComponent ();
-            } catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-            }
+		    InitializeComponent ();
         }
 
         private async void ToolbarItem_Clicked(object sender, System.EventArgs e)
         {
-            var a = GroupsPage.GlobalFaculty;
+            var a = GlobalFaculty;
             a.RemoveStudent(BindingContext as Student);
             UpdateList(a);
             await Navigation.PopAsync();
@@ -41,7 +35,7 @@ namespace AnrixApp.ViewModels
         {
             var a = GlobalFaculty;
             popupImageView.IsVisible = false;
-            CurrentStudent.PhotoUrl = UserLink.Text != null ? UserLink.Text : "big_student_face.png";
+            CurrentStudent.PhotoUrl = UserLink.Text ?? "big_student_face.png";
 
             UserLink.Text = null;
             BindingContext = null;

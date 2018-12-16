@@ -12,7 +12,7 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <ListView  RowHeight="70" x:Name="StudentsList" SelectionMode="None" ItemsSource="{Binding .}" ItemTapped="ListView_ItemTapped">
+            <ListView CachingStrategy="RetainElement" RowHeight="70" x:Name="StudentsList" SelectionMode="None" ItemsSource="{Binding .}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

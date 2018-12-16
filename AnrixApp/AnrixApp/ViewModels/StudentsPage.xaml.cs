@@ -5,7 +5,6 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.Settings;
-using static AnrixApp.Services.TelegramBot;
 
 namespace AnrixApp.ViewModels
 {
@@ -20,7 +19,7 @@ namespace AnrixApp.ViewModels
             GroupsPage.OnListUpdated += delegate (Faculty faculty)
             {
                 BindingContext = null;
-                BindingContext = allStudents = faculty.getMegaGroup();
+                BindingContext = allStudents = faculty.GetMegaGroup();
             };
         }
 

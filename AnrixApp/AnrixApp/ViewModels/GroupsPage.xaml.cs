@@ -21,7 +21,7 @@ namespace AnrixApp.ViewModels
             {
                BindingContext = null;
                GlobalFaculty = faculty;
-               BindingContext = faculty.getGroups();
+               BindingContext = faculty.GetGroups();
             };
             InitializeComponent();        
         }

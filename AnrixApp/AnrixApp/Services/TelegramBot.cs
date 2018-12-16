@@ -63,7 +63,7 @@ namespace AnrixApp.Services
                 var mark = double.Parse(Array[4]);
                 return new Student(Array[0], Array[1], Array[2], mark, Array[3], Array[5]);
 
-            } catch (Exception e)
+            } catch (Exception)
             {
                 return null;
             }

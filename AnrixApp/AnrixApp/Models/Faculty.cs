@@ -28,14 +28,27 @@ namespace AnrixApp.Models
                     group.Remove(student);
                 }
                     
-            }           
+            }       
         }
 
-        public List<Group> getGroups() => Groups;
-        public Group getMegaGroup()
+        public void AddStudent(Student student)
+        {
+            foreach (var group in Groups)
+            {
+                if (student.NumberOfGroup.Equals(group.NumberOfGroup))
+                {
+                    group.Add(student);
+                    return;
+                }
+            }
+
+        }
+
+        public List<Group> GetGroups() => Groups;
+        public Group GetMegaGroup()
         {
             Group megaGroup = new Group("000", 0);
-            foreach (var temp in getGroups())
+            foreach (var temp in GetGroups())
             {
                 foreach (var tempS in temp)
                     megaGroup.Add(tempS);
