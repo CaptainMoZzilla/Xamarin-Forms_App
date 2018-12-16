@@ -7,9 +7,10 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="share_icon.png" Clicked="ToolbarItem_Clicked_1"/>
-        <ToolbarItem Icon="basket.png" Clicked="ToolbarItem_Clicked"/>
+        <ToolbarItem x:Name="SecondBarItem" Icon="pencil_icon.png" Clicked="ToolbarItem_Clicked_2"/>
+        <ToolbarItem x:Name="ThirdBarItem" Icon="basket.png" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
-
+    
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">
@@ -29,15 +30,37 @@
                     <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                         <StackLayout Orientation="Vertical" BackgroundColor="White">
                             <Entry x:Name="UserLink" Margin="20,0,20,0" Placeholder="Enter image link"></Entry>
-                            <Button Margin="20,0,20,0" Text="Enter" Clicked="Button_Clicked"></Button>
+                            <Button Margin="20,0,20,0" Text="Enter" BackgroundColor="{StaticResource ToolbarColor}" TextColor="White" Clicked="Button_Clicked"></Button>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
 
 
-                <Label Text="{Binding Title}" FontSize="Large" TextColor="Black" HorizontalOptions="Center"/>
-                <Label Text="{Binding Patronymic}" FontSize="Large" TextColor="Black" HorizontalOptions="Center"/>
+                <Label x:Name="StudentTitle" Text="{Binding Title}" FontSize="Large" TextColor="Black" HorizontalOptions="Center"/>
+                <Label x:Name="Patronymic" Text="{Binding Patronymic}" FontSize="Large" TextColor="Black" HorizontalOptions="Center"/>
 
+
+                <StackLayout x:Name="EditStack" HorizontalOptions="Center" IsVisible="False">
+                    <StackLayout Orientation="Horizontal">
+                        <Label VerticalOptions="Center" FontSize ="Large" Text="Name:"/>
+                        <Entry x:Name="EditName" VerticalOptions="Center"  Text="{Binding Name}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label VerticalOptions="Center" FontSize ="Large" Text="Surname:"/>
+                        <Entry x:Name="EditSurname" VerticalOptions="Center" Text="{Binding Surname}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label VerticalOptions="Center" FontSize ="Large" Text="Patronymic:"/>
+                        <Entry x:Name="EditPatronymic" VerticalOptions="Center" Text="{Binding Patronymic}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label VerticalOptions="Center" FontSize ="Large" Text="Mark:"/>
+                        <Entry x:Name="EditAverageMark" VerticalOptions="Center" Keyboard="Numeric" Text="{Binding AverageMark}"/>
+                    </StackLayout>
+
+                    <Button Text="Save" BackgroundColor="{StaticResource ToolbarColor}" Clicked="Button_Clicked_1" TextColor="White"/>
+                </StackLayout>
+                
                 <Grid HorizontalOptions="Center" Padding="20,20,20,0" ColumnSpacing="1" RowSpacing="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"/>
@@ -47,11 +70,11 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Text="Mark" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
-                    <Label Text="{Binding AverageMark}" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
-
-                    <Label Text="Group" Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
-                    <Label Text="{Binding NumberOfGroup}" Grid.Row="1" Grid.Column="1" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
+                    <Label x:Name="MarkText" Text="Mark" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
+                    <Label x:Name="MarkLabel" Text="{Binding AverageMark}" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
+                    <Label x:Name="GroupText" Text="Group" Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
+                    <Label x:Name="GroupLabel" Text="{Binding NumberOfGroup}" Grid.Row="1" Grid.Column="1" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
+                 
                 </Grid>
             </StackLayout>
         </ScrollView>
