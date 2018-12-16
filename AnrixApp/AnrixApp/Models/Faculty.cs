@@ -41,7 +41,11 @@ namespace AnrixApp.Models
                     return;
                 }
             }
-
+            var a = new Group(student.NumberOfGroup, student.NumberOfGroup[0] - '0' - 5)
+            {
+                student
+            };
+            Add(a);
         }
 
         public List<Group> GetGroups() => Groups;

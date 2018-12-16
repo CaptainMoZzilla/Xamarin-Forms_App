@@ -5,6 +5,7 @@ namespace AnrixApp.Models
 {
     public class Student
     {
+        public Student() { }
         public Student(string name, string surname, string patronymic, double averageMark, string numberOfGroup, string photoUrl)
         {
             Name = name;

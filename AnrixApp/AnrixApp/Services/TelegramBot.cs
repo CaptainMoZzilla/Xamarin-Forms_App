@@ -1,5 +1,6 @@
 ﻿using AnrixApp.Models;
 using System;
+using System.Threading.Tasks;
 using Telegram.Bot;
 
 namespace AnrixApp.Services
@@ -8,7 +9,7 @@ namespace AnrixApp.Services
     {
         private static ITelegramBotClient Bot = new TelegramBotClient("685145928:AAGVX0D5HWJDIldsYVJq7iUZ38RVG0DaJPE");
         private const string ERROR_MESSAGE = "Проверьте правильность вашей анкеты:\nПример /showexample";
-        public delegate void OnMessage(Student student);
+        public delegate void OnMessage(StudentRequest student);
         public static event OnMessage OnMessagePut;
 
         static TelegramBot()
@@ -36,9 +37,9 @@ namespace AnrixApp.Services
                     {
                         await Bot.SendTextMessageAsync(chatId: message.Chat.Id, text: ERROR_MESSAGE,
                             replyToMessageId: message.MessageId);
+                        return;
                     }
-                    //await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Test Title", "Test", "OK");
-                    //await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Test Title", "Test", "OK");
+                    OnMessagePut(new StudentRequest(student) { ChatId = message.Chat.Id, MessageId = message.MessageId } );
                 }
             }
         }
@@ -68,5 +69,11 @@ namespace AnrixApp.Services
                 return null;
             }
         }
+
+        public static async Task SendSuccessMessage(StudentRequest student) => await Bot.SendTextMessageAsync(chatId: student.ChatId,
+            replyToMessageId: student.MessageId, text: "Добавлено администратором!");
+
+        public static async Task SendErrorMessage(StudentRequest student) => await Bot.SendTextMessageAsync(chatId: student.ChatId,
+            replyToMessageId: student.MessageId, text: "Отклонено администратором!");
     }
 }

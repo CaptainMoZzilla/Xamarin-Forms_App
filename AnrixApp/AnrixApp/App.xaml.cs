@@ -3,12 +3,8 @@ using Xamarin.Forms.Xaml;
 using AnrixApp.Views;
 using AnrixApp.Models;
 using static AnrixApp.ViewModels.GroupsPage;
-using System.Diagnostics;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using System.IO;
 using AnrixApp.Services;
-using System;
 using Plugin.Settings;
 using System.Collections.Generic;
 
@@ -35,7 +31,7 @@ namespace AnrixApp
             OnListUpdated += delegate (Faculty faculty2)
             {
                 faculty = faculty2;
-                CrossSettings.Current.AddOrUpdateValue("Faculty", JsonConvert.SerializeObject(faculty2.GetMegaGroup().getStudents(), Formatting.Indented));
+                CrossSettings.Current.AddOrUpdateValue("Faculty", JsonConvert.SerializeObject(faculty2.GetMegaGroup().GetStudents(), Formatting.Indented));
             };
         }
 

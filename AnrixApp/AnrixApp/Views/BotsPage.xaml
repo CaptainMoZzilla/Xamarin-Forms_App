@@ -3,14 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             x:Class="AnrixApp.Views.BotsPage">
+             x:Class="AnrixApp.Views.BotsPage"
+             Title="Add requests">
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="settings_icon.png" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <ListView CachingStrategy="RecycleElementAndDataTemplate" RowHeight="90" x:Name="StudentsList" SelectionMode="None" ItemsSource="{Binding .}" >
+        <ListView CachingStrategy="RecycleElementAndDataTemplate" ItemTapped="StudentsList_ItemTapped" RowHeight="70" x:Name="StudentsList" SelectionMode="None" ItemsSource="{Binding .}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -26,11 +27,21 @@
                             <StackLayout Orientation="Vertical">
                                 <Label Text="{Binding Title}" TextColor="Black" 
                                                        Margin="0,7,0,0" FontSize="Medium" HorizontalOptions="StartAndExpand" />
-                                <Label Margin="0,10,0,0" Text="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}"/>
+                                <Label Margin="0,7,0,0" Text="{Binding NumberOfGroup, StringFormat='Group: {0:N}'}"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
-                                <Image Source="success.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
-                                <Image Source="error.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center"/>
+                                <Image Source="success.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" >
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                           Tapped="TapGestureRecognizer_Tapped"  />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image x:Name="{Binding .}" Source="error.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                           Tapped="TapGestureRecognizer_Tapped_1"  />
+                                    </Image.GestureRecognizers>
+                                </Image>
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>

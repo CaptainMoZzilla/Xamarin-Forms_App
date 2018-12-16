@@ -28,6 +28,6 @@ namespace AnrixApp.Models
 
         public void Remove(Student a) => Students.Remove(a);
         public void Add(Student a) => Students.Add(a);
-        public List<Student> getStudents()  => new List<Student>(Students);
+        public List<Student> GetStudents()  => new List<Student>(Students);
     }
 }
