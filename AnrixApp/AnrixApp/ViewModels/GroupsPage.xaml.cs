@@ -51,9 +51,8 @@ namespace AnrixApp.ViewModels
 
         private void ToolbarItem_Clicked_1(object sender, EventArgs e)
         {
-           // var javafile = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads);
+            //var javafile = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads);
             //Debug.WriteLine(KnownFolders);
-            
         }
     }
 }

@@ -87,7 +87,6 @@ namespace AnrixApp.ViewModels
 
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
-
             try {
                 var number = double.Parse(EditAverageMark.Text);
                 if (number > 10 || number < 0)

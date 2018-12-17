@@ -9,6 +9,8 @@ namespace AnrixApp.ViewModels
 		public StatisticPage ()
 		{
 			InitializeComponent ();
-		}
+            
+
+        }
     }
 }
