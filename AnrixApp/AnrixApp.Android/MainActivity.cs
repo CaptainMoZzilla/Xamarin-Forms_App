@@ -7,7 +7,7 @@ using FFImageLoading.Forms.Platform;
 namespace AnrixApp.Droid
 {
     [Activity(Label = "AnrixApp", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
@@ -17,7 +17,7 @@ namespace AnrixApp.Droid
             base.OnCreate(bundle);
             CachedImageRenderer.Init(true);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+            Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
         }
     }

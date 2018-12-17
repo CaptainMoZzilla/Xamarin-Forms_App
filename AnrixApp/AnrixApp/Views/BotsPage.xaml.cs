@@ -46,7 +46,7 @@ namespace AnrixApp.Views
             var student = ((Image)sender).Parent.Parent.BindingContext as StudentRequest;
             students.Remove(student);
             var a = GroupsPage.GlobalFaculty;
-            a.AddStudent(student as Student);
+            a.AddStudent(student.ToStudent());
 
             GroupsPage.UpdateList(a);
             OnBotListUpdated();
