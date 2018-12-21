@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             x:Class="AnrixApp.ViewModels.StudentDetailPage">
+             x:Class="AnrixApp.ViewModels.StudentDetailPage"
+             xmlns:translator="clr-namespace:AnrixApp.Services">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="share_icon.png" Clicked="ToolbarItem_Clicked_1"/>
@@ -42,23 +43,23 @@
 
                 <StackLayout x:Name="EditStack" HorizontalOptions="Center" IsVisible="False">
                     <StackLayout Orientation="Horizontal">
-                        <Label VerticalOptions="Center" FontSize ="Large" Text="Name:"/>
+                        <Label VerticalOptions="Center" FontSize ="Large" Text="{translator:TranslateExtension StudentsNameLabel}"/>
                         <Entry x:Name="EditName" VerticalOptions="Center"  Text="{Binding Name}"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label VerticalOptions="Center" FontSize ="Large" Text="Surname:"/>
+                        <Label VerticalOptions="Center" FontSize ="Large" Text="{translator:TranslateExtension StudentsSurnameLabel}"/>
                         <Entry x:Name="EditSurname" VerticalOptions="Center" Text="{Binding Surname}"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label VerticalOptions="Center" FontSize ="Large" Text="Patronymic:"/>
+                        <Label VerticalOptions="Center" FontSize ="Large" Text="{translator:TranslateExtension StudentsPatronymicLabel}"/>
                         <Entry x:Name="EditPatronymic" VerticalOptions="Center" Text="{Binding Patronymic}"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label VerticalOptions="Center" FontSize ="Large" Text="Mark:"/>
+                        <Label VerticalOptions="Center" FontSize ="Large" Text="{translator:TranslateExtension StudentsMarkLabel}"/>
                         <Entry x:Name="EditAverageMark" VerticalOptions="Center" Keyboard="Numeric" Text="{Binding AverageMark}"/>
                     </StackLayout>
 
-                    <Button Text="Save" BackgroundColor="{StaticResource ToolbarColor}" Clicked="Button_Clicked_1" TextColor="White"/>
+                    <Button Text="{translator:TranslateExtension StudentsSumbitButton}" BackgroundColor="{StaticResource ToolbarColor}" Clicked="Button_Clicked_1" TextColor="White"/>
                 </StackLayout>
                 
                 <Grid HorizontalOptions="Center" Padding="20,20,20,0" ColumnSpacing="1" RowSpacing="1">
@@ -74,7 +75,6 @@
                     <Label x:Name="MarkLabel" Text="{Binding AverageMark}" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
                     <Label x:Name="GroupText" Text="Group" Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
                     <Label x:Name="GroupLabel" Text="{Binding NumberOfGroup}" Grid.Row="1" Grid.Column="1" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
-                 
                 </Grid>
             </StackLayout>
         </ScrollView>

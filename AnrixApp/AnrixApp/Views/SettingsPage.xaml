@@ -3,14 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AnrixApp.Views.SettingsPage"
              BackgroundColor="{StaticResource BackgroundColor}"
-             Title="Settings"
-             x:Name="MainContentPage">
+             Title="{translator:TranslateExtension SettingsPageTitle}"
+             x:Name="MainContentPage"
+             xmlns:translator="clr-namespace:AnrixApp.Services">
     
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout x:Name="BasicSettingsStack">
                 <StackLayout x:Name="Stack1" BackgroundColor="{StaticResource ToolbarColor}" HeightRequest="30" HorizontalOptions="FillAndExpand">
-                    <Label Margin="10,5,0,0" Text="Basic UI" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
+                    <Label Margin="10,5,0,0" Text="{translator:TranslateExtension SettingStackName1}" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
                 </StackLayout>
 
                 <StackLayout Padding="10">
@@ -18,19 +19,29 @@
                     <Slider Margin="10,0,10,0" ValueChanged="FontSlider_ValueChanged" ThumbColor="{StaticResource ToolbarColor}" x:Name="FontSlider" Maximum="4"/>
                 </StackLayout>
                 <BoxView  x:Name="Separator1" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Padding="10">
+                        <Label Text="{translator:TranslateExtension SettingLanguageLabel}" TextColor="Black" />
+                        <Label Text="{translator:TranslateExtension SettingLanguageLabel1}" FontSize="Small" TextColor="Gray"/>
+                    </StackLayout>
+                    <Picker x:Name="Picker1" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <BoxView  x:Name="Separator4" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+
             </StackLayout>
 
             <StackLayout x:Name="StudentsPageStack">
                 <StackLayout x:Name="Stack2" BackgroundColor="{StaticResource ToolbarColor}" HeightRequest="30" HorizontalOptions="FillAndExpand">
-                    <Label Margin="10,5,0,0" Text="Student's Page" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
+                    <Label Margin="10,5,0,0" Text="{translator:TranslateExtension SettingStackName2}" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
                     <StackLayout Padding="10" x:Name="SearchLine_Stack">
-                        <Label Text="Search line" TextColor="Black" />
-                        <Label Text="Important! This can kill all design :D" FontSize="Small" TextColor="Gray"/>
+                        <Label Text="{translator:TranslateExtension SettingSearchLine}" TextColor="Black" />
+                        <Label Text="{translator:TranslateExtension SettingSearchLine1}" FontSize="Small" TextColor="Gray"/>
                     </StackLayout>
-                    <Switch Margin="40,0,0,0" x:Name="Toggle" Toggled="Switch_Toggled"/>
+                    <Switch Margin="5" x:Name="Toggle" HorizontalOptions="EndAndExpand" Toggled="Switch_Toggled"/>
                 </StackLayout>
 
                 <BoxView x:Name="Separator2" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
@@ -38,15 +49,15 @@
 
             <StackLayout x:Name="BotsSettings">
                 <StackLayout x:Name="Stack3" BackgroundColor="{StaticResource ToolbarColor}" HeightRequest="30" HorizontalOptions="FillAndExpand">
-                    <Label Margin="10,5,0,0" Text="Telegram bot" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
+                    <Label Margin="10,5,0,0" Text="{translator:TranslateExtension SettingStackName3}" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
                     <StackLayout Padding="10" x:Name="BotsSettings_Stack">
-                        <Label Text="Start recieving" TextColor="Black" />
-                        <Label Text="This increase battery consumption " FontSize="Small" TextColor="Gray"/>
+                        <Label Text="{translator:TranslateExtension SettingBot}" TextColor="Black" />
+                        <Label Text="{translator:TranslateExtension SettingBot1}" FontSize="Small" TextColor="Gray"/>
                     </StackLayout>
-                    <Switch Margin="40,0,0,0" x:Name="BotToggle" Toggled="BotToggle_Toggled"/>
+                    <Switch Margin="5" HorizontalOptions="EndAndExpand" x:Name="BotToggle" Toggled="BotToggle_Toggled"/>
                 </StackLayout>
 
                 <BoxView x:Name="Separator3" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>

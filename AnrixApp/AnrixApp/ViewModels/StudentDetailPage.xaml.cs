@@ -82,7 +82,6 @@ namespace AnrixApp.ViewModels
             EditSurname.IsTabStop = false;
             EditPatronymic.IsTabStop = false;
             EditAverageMark.IsTabStop = false;
-
         }
 
         private async void Button_Clicked_1(object sender, EventArgs e)

@@ -4,9 +4,11 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="AnrixApp.ViewModels.StudentsPage"
-             Title="All students">
+             Title="{translator:TranslateExtension StudentsPageTitle}"
+             xmlns:translator="clr-namespace:AnrixApp.Services">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ThirdBarItem" Icon="basket.png" Clicked="ThirdBarItem_Clicked"/>
         <ToolbarItem Icon="filter_icon.png" x:Name="FilterButton"  Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 

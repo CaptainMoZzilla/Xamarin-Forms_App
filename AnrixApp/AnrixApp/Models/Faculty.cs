@@ -19,6 +19,8 @@ namespace AnrixApp.Models
         }
 
         public void Add(Group a) => Groups.Add(a);
+        public void Remove(Group a) => Groups.Remove(a);
+
         public void RemoveStudent(Student student)
         {
             foreach (var group in Groups)
@@ -30,7 +32,6 @@ namespace AnrixApp.Models
                     
             }       
         }
-
         public void AddStudent(Student student)
         {
             foreach (var group in Groups)

@@ -4,7 +4,8 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="AnrixApp.Views.BotsPage"
-             Title="Add requests">
+             Title="{translator:TranslateExtension BotsPageTitle}"
+             xmlns:translator="clr-namespace:AnrixApp.Services">
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="settings_icon.png" Clicked="ToolbarItem_Clicked"/>

@@ -5,6 +5,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.Settings;
+using static AnrixApp.ViewModels.GroupsPage;
 
 namespace AnrixApp.ViewModels
 {
@@ -16,7 +17,8 @@ namespace AnrixApp.ViewModels
 		public StudentsPage ()
 		{
             InitializeComponent();
-            GroupsPage.OnListUpdated += delegate (Faculty faculty)
+            ToolbarItems.Remove(ThirdBarItem);
+            OnListUpdated += delegate (Faculty faculty)
             {
                 BindingContext = null;
                 BindingContext = allStudents = faculty.GetMegaGroup();
@@ -27,6 +29,7 @@ namespace AnrixApp.ViewModels
         {
             InitializeComponent();
             BindingContext = allStudents = group;
+            Title = group.NumberOfGroup;
         }
 
         protected override void OnAppearing()
@@ -75,6 +78,15 @@ namespace AnrixApp.ViewModels
             {
                 BindingContext = allStudents;
             }    
+        }
+
+        private async void ThirdBarItem_Clicked(object sender, EventArgs e)
+        {
+            var a = GlobalFaculty;
+            a.Remove(allStudents);
+            UpdateList(a);
+
+            await Navigation.PopAsync();
         }
     }
 }

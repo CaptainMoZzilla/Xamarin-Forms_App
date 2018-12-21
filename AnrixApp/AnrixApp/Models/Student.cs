@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace AnrixApp.Models
 {
@@ -27,8 +26,7 @@ namespace AnrixApp.Models
 
         public override bool Equals(object obj)
         {
-            var student = obj as Student;
-            return student != null &&
+            return obj is Student student &&
                    Name == student.Name &&
                    Surname == student.Surname &&
                    Patronymic == student.Patronymic &&

@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using AnrixApp.Services;
 using Plugin.Settings;
 using System.Collections.Generic;
+using Plugin.Multilingual;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace AnrixApp

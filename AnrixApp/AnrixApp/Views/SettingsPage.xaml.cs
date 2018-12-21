@@ -1,7 +1,6 @@
 ﻿using Plugin.Settings;
 using System;
 using System.Collections.Generic;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,11 +13,13 @@ namespace AnrixApp.Views
         public static event ColorUpdated BarColorUpdated;
 
         private List<string> MainColor = new List<string> { "#3f51b5", "#800080", "#fd6571", "#2cb42c", "#5c6298" };
+        private List<string> Languages = new List<string> { "English", "Русский" };
 
 		public SettingsPage ()
 		{
 			InitializeComponent ();
             var gestureREcognizer = new TapGestureRecognizer();
+            var gestureREcognizer2 = new TapGestureRecognizer();
 
             gestureREcognizer.Tapped += (s, e) =>
             {
@@ -26,6 +27,13 @@ namespace AnrixApp.Views
                 Toggle.IsToggled = !Toggle.IsToggled;
             };
             SearchLine_Stack.GestureRecognizers.Add(gestureREcognizer);
+
+            gestureREcognizer2.Tapped += (s, e) =>
+            {
+                BotToggle_Toggled(s, new ToggledEventArgs(!BotToggle.IsToggled));
+                BotToggle.IsToggled = !BotToggle.IsToggled;
+            };
+            BotsSettings_Stack.GestureRecognizers.Add(gestureREcognizer2);
 
             BarColorUpdated += delegate (Color color)
             {
@@ -39,8 +47,16 @@ namespace AnrixApp.Views
                 Stack2.BackgroundColor = color;
                 Stack3.BackgroundColor = color;
             };
-
+            Picker1.ItemsSource = Languages;
+            Picker1.SelectedIndexChanged += OnLanguageChanged;
+            Picker1.SelectedIndex = "ru".Equals(CrossSettings.Current.GetValueOrDefault("Language", "English")) ? 1 :0;
         }
+
+        private void OnLanguageChanged(object sender, EventArgs e)
+        {
+            CrossSettings.Current.AddOrUpdateValue("Language", "English".Equals(Picker1.SelectedItem) ? "en" : "ru");
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -53,6 +69,7 @@ namespace AnrixApp.Views
             Separator1.Color = color;
             Separator2.Color = color;
             Separator3.Color = color;
+            Separator4.Color = color;
 
             Stack1.BackgroundColor = color;
             Stack2.BackgroundColor = color;
