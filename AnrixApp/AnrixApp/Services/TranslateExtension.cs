@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
-using Plugin.Multilingual;
 using Plugin.Settings;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

@@ -69,12 +69,9 @@ namespace AnrixApp.ViewModels
 
         private void ToolbarItem_Clicked_2(object sender, EventArgs e)
         {
-            MarkLabel.IsVisible = false;
-            MarkText.IsVisible = false;
-            GroupLabel.IsVisible = false;
             StudentTitle.IsVisible = false;
             Patronymic.IsVisible = false;
-            GroupText.IsVisible = false;
+            BigGrid.IsVisible = false; 
 
             EditStack.IsVisible = true;
 
@@ -82,6 +79,7 @@ namespace AnrixApp.ViewModels
             EditSurname.IsTabStop = false;
             EditPatronymic.IsTabStop = false;
             EditAverageMark.IsTabStop = false;
+
         }
 
         private async void Button_Clicked_1(object sender, EventArgs e)
@@ -94,12 +92,9 @@ namespace AnrixApp.ViewModels
                 
                 var a = GlobalFaculty;
 
-                MarkLabel.IsVisible = true;
-                MarkText.IsVisible = true;
-                GroupLabel.IsVisible = true;
                 StudentTitle.IsVisible = true;
                 Patronymic.IsVisible = true;
-                GroupText.IsVisible = true;
+                BigGrid.IsVisible = true;
 
                 EditStack.IsVisible = false;
 
