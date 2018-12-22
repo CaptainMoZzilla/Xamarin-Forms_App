@@ -1,6 +1,6 @@
 ﻿using AnrixApp.Models;
 using System;
-using System.Diagnostics;
+using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,6 +12,7 @@ namespace AnrixApp.ViewModels
 	public partial class StudentDetailPage : ContentPage
 	{
         private Student CurrentStudent;
+
 		public StudentDetailPage (Student student)
 		{
             BindingContext = student;
@@ -21,6 +22,17 @@ namespace AnrixApp.ViewModels
             { 
                 ToolbarItems.Remove(SecondBarItem);
                 ToolbarItems.Remove(ThirdBarItem);   
+            }
+
+            var Group =  GlobalFaculty.GetGroups()
+                                      .Where(g => g.NumberOfGroup.Equals(CurrentStudent.NumberOfGroup))
+                                      .FirstOrDefault();
+            if (Group != null)
+            {
+                var Groupsmates = Group.GetStudents();
+                Groupsmates.Remove(CurrentStudent);
+                StudentsList.ItemsSource = Groupsmates;
+
             }
         }
 
@@ -108,13 +120,17 @@ namespace AnrixApp.ViewModels
                 BindingContext = CurrentStudent;
                 UpdateList(a);
 
-                Debug.WriteLine(CurrentStudent.Patronymic);
             } catch(Exception ex)
             {
                 await DisplayAlert("Error occurred", "Invalid mark\n" +
                     $"Info: {ex.Message}", "OK");
             }
 
+        }
+
+        private async void StudentsList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            await Navigation.PushAsync(new StudentDetailPage(e.Item as Student));
         }
     }
 }

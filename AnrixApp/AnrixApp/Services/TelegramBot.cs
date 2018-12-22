@@ -71,9 +71,9 @@ namespace AnrixApp.Services
         }
 
         public static async Task SendSuccessMessage(StudentRequest student) => await Bot.SendTextMessageAsync(chatId: student.ChatId,
-            replyToMessageId: student.MessageId, text: "Добавлено администратором!");
+            replyToMessageId: student.MessageId, text: "Одобрена администратором!");
 
         public static async Task SendErrorMessage(StudentRequest student) => await Bot.SendTextMessageAsync(chatId: student.ChatId,
-            replyToMessageId: student.MessageId, text: "Отклонено администратором!");
+            replyToMessageId: student.MessageId, text: "Отклонена администратором!");
     }
 }

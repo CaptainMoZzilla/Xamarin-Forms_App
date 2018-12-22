@@ -186,4 +186,13 @@
   <data name="StudentsSurnameLabel" xml:space="preserve">
     <value>Surname:</value>
   </data>
+  <data name="StudentsGroupLabel" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="StudentsGroupmates" xml:space="preserve">
+    <value>Groupmates</value>
+  </data>
+  <data name="StudentsMarkLabelGrid" xml:space="preserve">
+    <value>Mark</value>
+  </data>
 </root>
