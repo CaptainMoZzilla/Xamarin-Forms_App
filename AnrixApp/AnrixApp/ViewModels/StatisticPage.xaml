@@ -4,10 +4,9 @@
              x:Class="AnrixApp.ViewModels.StatisticPage"
              Title="{translator:TranslateExtension StatisticPAgeTitle}"
              xmlns:translator="clr-namespace:AnrixApp.Services">
-
     <ContentPage.Content>
         <StackLayout>
-
+            <Label Text="HelloWorld"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

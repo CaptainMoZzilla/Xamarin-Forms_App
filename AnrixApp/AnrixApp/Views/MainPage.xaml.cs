@@ -20,7 +20,7 @@ namespace AnrixApp.Views
             {
                 Page1.BarBackgroundColor = color;
                 Page2.BarBackgroundColor = color;
-                Page3.BarBackgroundColor = color;
+                //Page3.BarBackgroundColor = color;
                 Page4.BarBackgroundColor = color;
 
                 On<Android>().SetBarSelectedItemColor(color);

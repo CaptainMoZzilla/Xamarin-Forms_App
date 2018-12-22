@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using Plugin.Settings;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
