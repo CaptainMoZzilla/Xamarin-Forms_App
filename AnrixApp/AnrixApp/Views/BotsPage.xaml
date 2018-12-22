@@ -5,14 +5,25 @@
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="AnrixApp.Views.BotsPage"
              Title="{translator:TranslateExtension BotsPageTitle}"
-             xmlns:translator="clr-namespace:AnrixApp.Services">
+             xmlns:translator="clr-namespace:AnrixApp.Services"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms">
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="settings_icon.png" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <ListView CachingStrategy="RecycleElementAndDataTemplate" ItemTapped="StudentsList_ItemTapped" RowHeight="70" x:Name="StudentsList" SelectionMode="None" ItemsSource="{Binding .}" >
+        <StackLayout x:Name="BaseStack">
+            <forms:AnimationView 
+                    x:Name="Animation"
+                    IsVisible="False"
+	                Animation="empty_box.json" 
+	                Loop="True" 
+	                AutoPlay="True" 
+                    WidthRequest="{Binding Source={x:Reference BaseStack},Path=Width}"
+                    HeightRequest="{Binding Source={x:Reference BaseStack},Path=Height}"/>
+            
+            <ListView CachingStrategy="RecycleElementAndDataTemplate" ItemTapped="StudentsList_ItemTapped" RowHeight="70" x:Name="StudentsList" SelectionMode="None" ItemsSource="{Binding .}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -49,5 +60,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

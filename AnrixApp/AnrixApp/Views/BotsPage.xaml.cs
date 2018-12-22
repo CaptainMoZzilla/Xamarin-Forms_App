@@ -25,6 +25,23 @@ namespace AnrixApp.Views
                 BindingContext = null;
                 BindingContext = students ;
                 CrossSettings.Current.AddOrUpdateValue("BotsList", JsonConvert.SerializeObject(students, Formatting.Indented));
+
+                if (students.Count == 0)
+                {
+                    if (StudentsList.IsVisible)
+                        StudentsList.IsVisible = false;
+                    if (!Animation.IsVisible)
+                        Animation.IsVisible = true;
+                    if (Animation.IsTabStop)
+                        Animation.IsTabStop = false;
+                    if (!Animation.IsPlaying)
+                        Animation.Play();
+                } else if (Animation.IsPlaying)
+                {
+                    Animation.Pause();
+                    Animation.IsVisible = false;
+                    StudentsList.IsVisible = true;
+                }
             };
 
             InitializeComponent();

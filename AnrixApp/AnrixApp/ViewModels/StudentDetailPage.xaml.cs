@@ -101,24 +101,10 @@ namespace AnrixApp.ViewModels
                 if (number > 10 || number < 0)
                     throw new ArgumentException("Mark can't be <0 or >10");
 
-                
-                var a = GlobalFaculty;
-
-                StudentTitle.IsVisible = true;
-                Patronymic.IsVisible = true;
-                BigGrid.IsVisible = true;
-
-                EditStack.IsVisible = false;
-
-                CurrentStudent.AverageMark = number;
-                CurrentStudent.Name = EditName.Text;
-                CurrentStudent.Surname = EditSurname.Text;
-                CurrentStudent.Patronymic = EditPatronymic.Text;
-                CurrentStudent.Title = Title = EditName.Text + " " + EditSurname.Text;
-
-                BindingContext = null;
-                BindingContext = CurrentStudent;
-                UpdateList(a);
+                AllContent.IsVisible = false;
+                Animation.IsVisible = true;
+                Animation.Play();
+              
 
             } catch(Exception ex)
             {
@@ -131,6 +117,31 @@ namespace AnrixApp.ViewModels
         private async void StudentsList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             await Navigation.PushAsync(new StudentDetailPage(e.Item as Student));
+        }
+
+        private void Animation_OnFinish(object sender, EventArgs e)
+        {
+            var number = double.Parse(EditAverageMark.Text);
+            AllContent.IsVisible = true;
+            Animation.IsVisible = false;
+
+            var a = GlobalFaculty;
+
+            StudentTitle.IsVisible = true;
+            Patronymic.IsVisible = true;
+            BigGrid.IsVisible = true;
+
+            EditStack.IsVisible = false;
+
+            CurrentStudent.AverageMark = number;
+            CurrentStudent.Name = EditName.Text;
+            CurrentStudent.Surname = EditSurname.Text;
+            CurrentStudent.Patronymic = EditPatronymic.Text;
+            CurrentStudent.Title = Title = EditName.Text + " " + EditSurname.Text;
+
+            BindingContext = null;
+            BindingContext = CurrentStudent;
+            UpdateList(a);
         }
     }
 }
