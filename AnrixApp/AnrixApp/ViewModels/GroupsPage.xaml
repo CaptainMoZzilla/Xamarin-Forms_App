@@ -8,7 +8,9 @@
              Title="{translator:TranslateExtension GroupsPageTitle}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Load info" Priority="1" Order="Secondary" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="Import database" Priority="1" Order="Secondary" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="Import JSON" Priority="2" Order="Secondary" Clicked="ToolbarItem_Clicked_2" />
+        <ToolbarItem Text="Export JSON" Priority="2" Order="Secondary" Clicked="ToolbarItem_Clicked_1" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>

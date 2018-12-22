@@ -1,8 +1,12 @@
 ﻿using AnrixApp.Models;
 using AnrixApp.Services;
+using Newtonsoft.Json;
 using Plugin.FilePicker;
 using Plugin.FilePicker.Abstractions;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,6 +18,7 @@ namespace AnrixApp.ViewModels
         public delegate void ListUpdated(Faculty faculty);
         public static event ListUpdated OnListUpdated;
         public static Faculty GlobalFaculty;
+        private static string PATH_TO_DOCS = "storage/emulated/0/Documents/Base.json";
 
         public GroupsPage ()
 		{
@@ -49,10 +54,38 @@ namespace AnrixApp.ViewModels
 
         public static void UpdateList(Faculty faculty) => OnListUpdated(faculty);
 
-        private void ToolbarItem_Clicked_1(object sender, EventArgs e)
+        private async void ToolbarItem_Clicked_1(object sender, EventArgs e)
         {
-            //var javafile = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads);
-            //Debug.WriteLine(KnownFolders);
+            try
+            { 
+                var fs = new FileStream(PATH_TO_DOCS, FileMode.Create);
+                StreamWriter sr = new StreamWriter(fs);
+                sr.WriteLine(JsonConvert.SerializeObject(GlobalFaculty.GetMegaGroup().GetStudents(), Formatting.Indented));
+                sr.Close();
+                fs.Close();
+
+                await DisplayAlert("Success", "Saved to docs", "Ok");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error occur", $"Something go wrong: {ex.Message}", "Back");
+            }
+        }
+
+        private async void ToolbarItem_Clicked_2(object sender, EventArgs e)
+        {
+            try { 
+                FileData filedata = await CrossFilePicker.Current.PickFile();
+                var fs = new FileStream(filedata.FilePath, FileMode.Open);
+                StreamReader sr = new StreamReader(fs);
+                GlobalFaculty = new Faculty(JsonConvert.DeserializeObject<List<Student>>(await sr.ReadToEndAsync()));
+
+                OnListUpdated(GlobalFaculty);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error occur", $"Something go wrong: {ex.Message}", "Back");
+            }
         }
     }
 }

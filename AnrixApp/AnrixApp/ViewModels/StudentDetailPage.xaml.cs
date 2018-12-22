@@ -43,7 +43,6 @@ namespace AnrixApp.ViewModels
             Stack1.BackgroundColor = color;
             Stack2.BackgroundColor = color;
             Label1.BackgroundColor = color;
-
         }
 
         private async void ToolbarItem_Clicked(object sender, System.EventArgs e)
