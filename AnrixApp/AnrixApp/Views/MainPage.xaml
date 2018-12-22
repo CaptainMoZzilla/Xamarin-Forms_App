@@ -19,13 +19,7 @@
                 <views:StudentsPage/>
             </x:Arguments>
         </NavigationPage>
-
-        <!--<NavigationPage x:Name="Page3" Title="{translator:TranslateExtension StatisticIconTitle}" Icon="statistics_icon.png" BarBackgroundColor="{StaticResource ToolbarColor}">
-            <x:Arguments>
-                <views:StatisticPage/>
-            </x:Arguments>
-        </NavigationPage>-->
-
+        
         <NavigationPage x:Name="Page4" Title="{translator:TranslateExtension BotIconTitle}" Icon="bot_icon.png" BarBackgroundColor="{StaticResource ToolbarColor}">
             <x:Arguments>
                 <views1:BotsPage/>

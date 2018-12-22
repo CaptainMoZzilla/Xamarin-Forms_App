@@ -27,10 +27,11 @@
                     OnFinish="Animation_OnFinish"/>
 
             <StackLayout x:Name="AllContent" Orientation="Vertical">
-                <StackLayout BackgroundColor="{StaticResource ToolbarColor}">
+                <StackLayout x:Name="BigStack" BackgroundColor="{StaticResource ToolbarColor}">
                     <ffimageloading:CachedImage HorizontalOptions="Center" 
 		                    HeightRequest="200" WidthRequest="200"
 		        	        Source = "{Binding PhotoUrl}"
+                            x:Name="CachedImage"
                             Margin="10,0,0,0" BackgroundColor="{StaticResource ToolbarColor}">
                         <ffimageloading:CachedImage.Transformations>
                             <fftransformations:CircleTransformation BorderHexColor="ffffff" BorderSize="20"/>
@@ -79,17 +80,17 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource ToolbarColor}">
-                            <Label x:Name="GroupText" Font="Arial" Text="{translator:TranslateExtension StudentsGroupLabel}" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" BackgroundColor="{StaticResource ToolbarColor}"/>
+                        <StackLayout x:Name="Stack1" Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource ToolbarColor}">
+                            <Label x:Name="GroupText" Font="Arial" Text="{translator:TranslateExtension StudentsGroupLabel}" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
                             <Label x:Name="GroupLabel" Font="Italic" Text="{Binding NumberOfGroup}" TextColor="White" FontSize="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                         </StackLayout>
 
-                        <StackLayout Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource ToolbarColor}">
-                            <Label x:Name="MarkText" Font="Arial" Text="{translator:TranslateExtension StudentsMarkLabelGrid}" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" BackgroundColor="{StaticResource ToolbarColor}"/>
+                        <StackLayout x:Name="Stack2" Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource ToolbarColor}">
+                            <Label x:Name="MarkText" Font="Arial" Text="{translator:TranslateExtension StudentsMarkLabelGrid}" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
                             <Label x:Name="MarkLabel" Font="Italic" Text="{Binding AverageMark}" TextColor="White" FontSize="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                         </StackLayout>
                     </Grid>
-                    <Label Margin="5" HorizontalOptions="Center" FontSize="Micro" Text="{translator:TranslateExtension StudentsGroupmates}" TextColor="White"/>
+                    <Label x:Name="Label1" Margin="5" HorizontalOptions="Center" FontSize="Micro" Text="{translator:TranslateExtension StudentsGroupmates}" TextColor="White"/>
                 </StackLayout>
                 <ListView CachingStrategy="RetainElement" x:Name="StudentsList" SelectionMode="None" ItemTapped="StudentsList_ItemTapped">
                     <ListView.ItemTemplate>

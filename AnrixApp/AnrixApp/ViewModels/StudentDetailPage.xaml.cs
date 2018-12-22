@@ -1,4 +1,5 @@
 ﻿using AnrixApp.Models;
+using Plugin.Settings;
 using System;
 using System.Linq;
 using Xamarin.Essentials;
@@ -34,6 +35,15 @@ namespace AnrixApp.ViewModels
                 StudentsList.ItemsSource = Groupsmates;
 
             }
+            var color = Color.FromHex(CrossSettings.Current.GetValueOrDefault("Color", "000000"));
+            BigStack.BackgroundColor = color;
+            CachedImage.BackgroundColor = color;
+            popupImageView.BackgroundColor = color;
+            BigGrid.BackgroundColor = color;
+            Stack1.BackgroundColor = color;
+            Stack2.BackgroundColor = color;
+            Label1.BackgroundColor = color;
+
         }
 
         private async void ToolbarItem_Clicked(object sender, System.EventArgs e)
