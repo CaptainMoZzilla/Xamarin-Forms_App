@@ -108,11 +108,12 @@ namespace AnrixApp.ViewModels
                 EditAverageMark.IsTabStop = false;
             } else
             {
+                var CurrenLanguage = "ru".Equals(CrossSettings.Current.GetValueOrDefault("Language", "en"));
                 try
                 {
                     var number = double.Parse(EditAverageMark.Text);
                     if (number > 10 || number < 0)
-                        throw new ArgumentException("Mark can't be <0 or >10");
+                        throw new ArgumentException(CurrenLanguage ? "Отметка не может быть <0 || >10" : "Mark can't be <0 or >10");
 
                     AllContent.IsVisible = false;
                     Animation.IsVisible = true;
@@ -121,8 +122,10 @@ namespace AnrixApp.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    await DisplayAlert("Error occurred", "Invalid mark\n" +
-                        $"Info: {ex.Message}", "OK");
+                    await DisplayAlert(CurrenLanguage ? "Произошла ошибка!" : "Error occurred!"
+                        , CurrenLanguage ? "Не валидная отметка" : "Invalid mark\n" +
+                        (CurrenLanguage ? $"Информация: {ex.Message}" : $"Info: {ex.Message}")
+                        , "OK");
                 }
 
             }

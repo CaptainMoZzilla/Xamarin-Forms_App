@@ -3,6 +3,7 @@ using AnrixApp.Services;
 using Newtonsoft.Json;
 using Plugin.FilePicker;
 using Plugin.FilePicker.Abstractions;
+using Plugin.Settings;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -33,6 +34,7 @@ namespace AnrixApp.ViewModels
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
+            var CurrenLanguage = "ru".Equals(CrossSettings.Current.GetValueOrDefault("Language", "en"));
             try
             {
                 FileData filedata = await CrossFilePicker.Current.PickFile();
@@ -42,7 +44,10 @@ namespace AnrixApp.ViewModels
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error occur", $"Something go wrong: {ex.Message}", "Back");
+                await DisplayAlert(CurrenLanguage ? "Произошла ошибка!" : "Error occurred!"
+                     , CurrenLanguage ? $"Что-то пошло не так: {ex.Message}"
+                     : $"Something go wrong: {ex.Message}"
+                     , "Ok");
             }
         }
 
@@ -56,6 +61,8 @@ namespace AnrixApp.ViewModels
 
         private async void ToolbarItem_Clicked_1(object sender, EventArgs e)
         {
+            var CurrenLanguage = "ru".Equals(CrossSettings.Current.GetValueOrDefault("Language", "en"));
+
             try
             { 
                 var fs = new FileStream(PATH_TO_DOCS, FileMode.Create);
@@ -64,11 +71,15 @@ namespace AnrixApp.ViewModels
                 sr.Close();
                 fs.Close();
 
-                await DisplayAlert("Success", "Saved to docs", "Ok");
+                await DisplayAlert(CurrenLanguage ? "Успешно" : "Success"
+                    , CurrenLanguage ? "Сохранено в документы" : "Saved to docs", "Ok");
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error occur", $"Something go wrong: {ex.Message}", "Back");
+                await DisplayAlert(CurrenLanguage ? "Произошла ошибка!" : "Error occurred!"
+                        , CurrenLanguage ? $"Что-то пошло не так: {ex.Message}"
+                        : $"Something go wrong: {ex.Message}"
+                        , "Ok");
             }
         }
 
@@ -84,7 +95,11 @@ namespace AnrixApp.ViewModels
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error occur", $"Something go wrong: {ex.Message}", "Back");
+                var CurrenLanguage = "ru".Equals(CrossSettings.Current.GetValueOrDefault("Language", "en"));
+                await DisplayAlert(CurrenLanguage ? "Произошла ошибка!" : "Error occurred!"
+                        , CurrenLanguage ? $"Что-то пошло не так: {ex.Message}"
+                        : $"Something go wrong: {ex.Message}"
+                        , "Ok");
             }
         }
     }
