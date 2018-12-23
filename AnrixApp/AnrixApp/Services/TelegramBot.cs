@@ -1,5 +1,6 @@
 ﻿using AnrixApp.Models;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Telegram.Bot;
 
@@ -46,9 +47,11 @@ namespace AnrixApp.Services
 
         public static void TelegramBot_OnRecievingUpdate(bool state)
         {
-            if (state)
+            if (state && !Bot.IsReceiving)
+            {
                 Bot.StartReceiving();
-            else if (Bot.IsReceiving) {
+            }
+            else if (!state && Bot.IsReceiving) {
                 Bot.StopReceiving();
             }
         }
