@@ -13,8 +13,10 @@ namespace AnrixApp.ViewModels
 	public partial class StudentDetailPage : ContentPage
 	{
         private Student CurrentStudent;
+        private string SaveIconName = "save_icon.png";
+        private string PencilIconName = "pencil_icon.png";
 
-		public StudentDetailPage (Student student)
+        public StudentDetailPage (Student student)
 		{
             BindingContext = student;
             CurrentStudent = student;
@@ -88,37 +90,41 @@ namespace AnrixApp.ViewModels
             });
         }
 
-        private void ToolbarItem_Clicked_2(object sender, EventArgs e)
+        private async void ToolbarItem_Clicked_2(object sender, EventArgs e)
         {
-            StudentTitle.IsVisible = false;
-            Patronymic.IsVisible = false;
-            BigGrid.IsVisible = false; 
-
-            EditStack.IsVisible = true;
-
-            EditName.IsTabStop = false;
-            EditSurname.IsTabStop = false;
-            EditPatronymic.IsTabStop = false;
-            EditAverageMark.IsTabStop = false;
-
-        }
-
-        private async void Button_Clicked_1(object sender, EventArgs e)
-        {
-            try {
-                var number = double.Parse(EditAverageMark.Text);
-                if (number > 10 || number < 0)
-                    throw new ArgumentException("Mark can't be <0 or >10");
-
-                AllContent.IsVisible = false;
-                Animation.IsVisible = true;
-                Animation.Play();
-              
-
-            } catch(Exception ex)
+            if (PencilIconName == ToolbarItems[1].Icon)
             {
-                await DisplayAlert("Error occurred", "Invalid mark\n" +
-                    $"Info: {ex.Message}", "OK");
+                ToolbarItems[1].Icon = SaveIconName;
+
+                StudentTitle.IsVisible = false;
+                Patronymic.IsVisible = false;
+                BigGrid.IsVisible = false; 
+
+                EditStack.IsVisible = true;
+
+                EditName.IsTabStop = false;
+                EditSurname.IsTabStop = false;
+                EditPatronymic.IsTabStop = false;
+                EditAverageMark.IsTabStop = false;
+            } else
+            {
+                try
+                {
+                    var number = double.Parse(EditAverageMark.Text);
+                    if (number > 10 || number < 0)
+                        throw new ArgumentException("Mark can't be <0 or >10");
+
+                    AllContent.IsVisible = false;
+                    Animation.IsVisible = true;
+                    Animation.Play();
+                    ToolbarItems[1].Icon = PencilIconName;
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Error occurred", "Invalid mark\n" +
+                        $"Info: {ex.Message}", "OK");
+                }
+
             }
 
         }

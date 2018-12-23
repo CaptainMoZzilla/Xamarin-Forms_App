@@ -69,7 +69,6 @@
                             <Label TextColor="White" VerticalOptions="Center" FontSize ="Large" Text="{translator:TranslateExtension StudentsMarkLabel}"/>
                             <Entry x:Name="EditAverageMark" TextColor="White"  VerticalOptions="Center" Keyboard="Numeric" Text="{Binding AverageMark}"/>
                         </StackLayout>
-                        <Button Text="{translator:TranslateExtension StudentsSumbitButton}" BackgroundColor="#FF0000" Clicked="Button_Clicked_1" TextColor="White"/>
                     </StackLayout>
 
                     <Grid x:Name="BigGrid" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="Center" BackgroundColor="{StaticResource BackgroundColor}">
