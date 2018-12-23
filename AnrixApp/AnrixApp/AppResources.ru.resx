@@ -195,4 +195,19 @@
   <data name="StudentsMarkLabelGrid" xml:space="preserve">
     <value>Оценка</value>
   </data>
+  <data name="DataBaseLabel" xml:space="preserve">
+    <value>Импортировать БД</value>
+  </data>
+  <data name="ExportJsonLabel" xml:space="preserve">
+    <value>Экспортировать JSON</value>
+  </data>
+  <data name="ImportJsonLabel" xml:space="preserve">
+    <value>Импортировать JSON</value>
+  </data>
+  <data name="StudentsDetailSubmutButton" xml:space="preserve">
+    <value>Принять</value>
+  </data>
+  <data name="StudentsDetailSubmutButtonText" xml:space="preserve">
+    <value>Ссылку (пусто для исп. стандарт.)</value>
+  </data>
 </root>

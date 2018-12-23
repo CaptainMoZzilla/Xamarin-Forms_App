@@ -195,4 +195,19 @@
   <data name="StudentsMarkLabelGrid" xml:space="preserve">
     <value>Mark</value>
   </data>
+  <data name="DataBaseLabel" xml:space="preserve">
+    <value>Import database</value>
+  </data>
+  <data name="ExportJsonLabel" xml:space="preserve">
+    <value>Export JSON</value>
+  </data>
+  <data name="ImportJsonLabel" xml:space="preserve">
+    <value>Import JSON</value>
+  </data>
+  <data name="StudentsDetailSubmutButton" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="StudentsDetailSubmutButtonText" xml:space="preserve">
+    <value>Link (empty to use default)</value>
+  </data>
 </root>

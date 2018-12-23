@@ -46,9 +46,9 @@
                     <StackLayout x:Name="popupImageView" IsVisible="false" BackgroundColor="{StaticResource ToolbarColor}">
                         <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                             <StackLayout Orientation="Vertical" BackgroundColor="White">
-                                <Entry x:Name="UserLink" Margin="20,0,20,0" Placeholder="Enter image link"></Entry>
-                                <Button Margin="20,0,20,0" Text="Enter" BackgroundColor="{StaticResource ToolbarColor}" TextColor="White" Clicked="Button_Clicked"></Button>
-                            </StackLayout>
+                                <Entry x:Name="UserLink" Margin="20,0,20,0" Placeholder="{translator:TranslateExtension StudentsDetailSubmutButtonText}"></Entry>
+                                <Button Margin="20,0,20,0" Text="{translator:TranslateExtension StudentsDetailSubmutButton}" BackgroundColor="{StaticResource ToolbarColor}" TextColor="White" Clicked="Button_Clicked"></Button>
+                            </StackLayout> 
                         </StackLayout>
                     </StackLayout>
 
