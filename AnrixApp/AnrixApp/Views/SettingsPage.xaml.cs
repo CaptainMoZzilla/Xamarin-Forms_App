@@ -1,6 +1,8 @@
-﻿using Plugin.Settings;
+﻿using FFImageLoading;
+using Plugin.Settings;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -42,6 +44,10 @@ namespace AnrixApp.Views
                 Separator1.Color = color;
                 Separator2.Color = color;
                 Separator3.Color = color;
+                Separator4.Color = color;
+                Separator5.Color = color;
+
+                ClearButton.BackgroundColor = color;
 
                 Stack1.BackgroundColor = color;
                 Stack2.BackgroundColor = color;
@@ -70,6 +76,9 @@ namespace AnrixApp.Views
             Separator2.Color = color;
             Separator3.Color = color;
             Separator4.Color = color;
+            Separator5.Color = color;
+
+            ClearButton.BackgroundColor = color;
 
             Stack1.BackgroundColor = color;
             Stack2.BackgroundColor = color;
@@ -92,6 +101,21 @@ namespace AnrixApp.Views
         {
             CrossSettings.Current.AddOrUpdateValue("IsBotEnabled", e.Value.ToString());
             Services.TelegramBot.TelegramBot_OnRecievingUpdate(e.Value);
+        }
+
+        private async void ClearButton_Clicked(object sender, EventArgs e)
+        {
+            var CurrenLanguage = "ru".Equals(CrossSettings.Current.GetValueOrDefault("Language", "en"));
+            var a = await DisplayAlert(CurrenLanguage ? "Внимание!" :"Attention" 
+                        , CurrenLanguage ? "Возможно неполное удаление, т.к. ListView имеет собственный кэш" 
+                            : "Perhaps incomplete removal, because ListView has own cache"
+                        , CurrenLanguage ? "Удалить" : "Clear"
+                        , CurrenLanguage ? "Назад" : "Back");
+            if (a)
+            {
+                await ImageService.Instance.InvalidateDiskCacheAsync();
+                ImageService.Instance.InvalidateMemoryCache();
+            }
         }
     }
 }

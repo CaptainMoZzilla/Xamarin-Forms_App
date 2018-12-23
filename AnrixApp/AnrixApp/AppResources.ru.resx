@@ -195,6 +195,15 @@
   <data name="StudentsMarkLabelGrid" xml:space="preserve">
     <value>Оценка</value>
   </data>
+  <data name="ClearButton" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="ClearCacheImage" xml:space="preserve">
+    <value>Очистить кэш</value>
+  </data>
+  <data name="ClearCacheImageDesc" xml:space="preserve">
+    <value>Очистить все сохраненные фото</value>
+  </data>
   <data name="DataBaseLabel" xml:space="preserve">
     <value>Импортировать БД</value>
   </data>

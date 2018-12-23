@@ -195,6 +195,15 @@
   <data name="StudentsMarkLabelGrid" xml:space="preserve">
     <value>Mark</value>
   </data>
+  <data name="ClearButton" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="ClearCacheImage" xml:space="preserve">
+    <value>Clear cache</value>
+  </data>
+  <data name="ClearCacheImageDesc" xml:space="preserve">
+    <value>Delete all cached images</value>
+  </data>
   <data name="DataBaseLabel" xml:space="preserve">
     <value>Import database</value>
   </data>

@@ -25,10 +25,19 @@
                         <Label Text="{translator:TranslateExtension SettingLanguageLabel}" TextColor="Black" />
                         <Label Text="{translator:TranslateExtension SettingLanguageLabel1}" FontSize="Small" TextColor="Gray"/>
                     </StackLayout>
-                    <Picker x:Name="Picker1" HorizontalOptions="FillAndExpand"/>
+                    <Picker x:Name="Picker1" Margin="0,0,7,0" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
-                <BoxView  x:Name="Separator4" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
-
+                <BoxView x:Name="Separator4" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+                
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Padding="10">
+                        <Label Text="{translator:TranslateExtension ClearCacheImage}" TextColor="Black" />
+                        <Label Text="{translator:TranslateExtension ClearCacheImageDesc}" FontSize="Small" TextColor="Gray"/>
+                    </StackLayout>
+                    <Button x:Name="ClearButton" Clicked="ClearButton_Clicked" Text="{translator:TranslateExtension ClearButton}" TextColor="White" Margin="0,0,7,0" BackgroundColor="{StaticResource ToolbarColor}" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                </StackLayout>
+                <BoxView x:Name="Separator5" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+            
             </StackLayout>
 
             <StackLayout x:Name="StudentsPageStack">
