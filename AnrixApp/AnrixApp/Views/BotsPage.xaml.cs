@@ -4,7 +4,7 @@ using AnrixApp.ViewModels;
 using Newtonsoft.Json;
 using Plugin.Settings;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,7 +13,7 @@ namespace AnrixApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BotsPage : ContentPage
 	{
-        private List<StudentRequest> students;
+        private ObservableCollection<StudentRequest> students;
         public delegate void BotListUpdated();
         public static event BotListUpdated OnBotListUpdated;
 
@@ -22,8 +22,6 @@ namespace AnrixApp.Views
             TelegramBot.OnMessagePut += AddStudent;
             OnBotListUpdated += delegate ()
             {
-                BindingContext = null;
-                BindingContext = students ;
                 CrossSettings.Current.AddOrUpdateValue("BotsList", JsonConvert.SerializeObject(students, Formatting.Indented));
 
                 if (students.Count == 0)
@@ -36,20 +34,20 @@ namespace AnrixApp.Views
                         Animation.IsTabStop = false;
                     if (!Animation.IsPlaying)
                         Animation.Play();
-                } else if (Animation.IsPlaying)
+                } else if (!StudentsList.IsVisible)
                 {
                     Animation.Pause();
                     Animation.IsVisible = false;
                     StudentsList.IsVisible = true;
                 }
+                BindingContext = students;
             };
 
             InitializeComponent();
 
-            students = JsonConvert.DeserializeObject<List<StudentRequest>>(CrossSettings.
-               Current.GetValueOrDefault("BotsList", "null")) ?? new List<StudentRequest>();
+            students = JsonConvert.DeserializeObject<ObservableCollection<StudentRequest>>(CrossSettings.
+               Current.GetValueOrDefault("BotsList", "null")) ?? new ObservableCollection<StudentRequest>();
             OnBotListUpdated();
-
         }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
