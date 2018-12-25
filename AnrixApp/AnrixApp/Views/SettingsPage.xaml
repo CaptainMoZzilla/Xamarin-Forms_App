@@ -5,44 +5,49 @@
              BackgroundColor="{StaticResource BackgroundColor}"
              Title="{translator:TranslateExtension SettingsPageTitle}"
              x:Name="MainContentPage"
-             xmlns:translator="clr-namespace:AnrixApp.Services">
+             xmlns:translator="clr-namespace:AnrixApp.Services"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
 
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout x:Name="Stack1" BackgroundColor="{StaticResource ToolbarColor}" HeightRequest="30" HorizontalOptions="FillAndExpand">
-                    <Label Margin="10,5,0,0" Text="{translator:TranslateExtension SettingStackName1}" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
+            
+            <StackLayout Orientation="Horizontal" x:Name="Stack1" BackgroundColor="{StaticResource ToolbarColor}" HeightRequest="30" HorizontalOptions="FillAndExpand">
+                <ffimageloading:CachedImage Margin="10,5,0,0" x:Name="ThemeIcon"  HorizontalOptions="Center" Source="up_icon.png"/>
+                <Label Text="{translator:TranslateExtension SettingStackName1}" Margin="0,0,0,2" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
             </StackLayout>
 
-
-                <StackLayout Padding="10">
-                    <StackLayout Orientation="Horizontal" HeightRequest="200">
-                        <ListView x:Name="ColorList" ItemTapped="ColorList_ItemTapped">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <TextCell Text="{Binding .}" TextColor="Black"/>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <StackLayout>
-                            <Frame x:Name="Frame" BackgroundColor="{StaticResource ToolbarColor}" CornerRadius="100">
-                                <BoxView x:Name="ColorsView"
-                                         Color="{StaticResource BackgroundColor}"
-                                         CornerRadius="100"
-                                         HeightRequest="114"
-                                         WidthRequest="114"
-                                         VerticalOptions="CenterAndExpand"
-                                         HorizontalOptions="CenterAndExpand">
-                                </BoxView>
-                            </Frame>
-                            <Label Text="Tap to save" FontSize="Small" HorizontalOptions="Center" TextColor="Gray"/>
-                        </StackLayout>
+            <StackLayout Padding="10,0,10,0" x:Name="ThemeStack">
+                <StackLayout Orientation="Horizontal" HeightRequest="200">
+                    <ListView x:Name="ColorList" ItemTapped="ColorList_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding .}" TextColor="Black"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <StackLayout>
+                        <Frame x:Name="Frame" BackgroundColor="{StaticResource ToolbarColor}" CornerRadius="100">
+                            <BoxView x:Name="ColorsView"
+                                        Color="{StaticResource BackgroundColor}"
+                                        CornerRadius="100"
+                                        HeightRequest="114"
+                                        WidthRequest="114"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="CenterAndExpand">
+                            </BoxView>
+                        </Frame>
+                        <Label Text="{translator:TranslateExtension SettingUsersInstrc}" FontSize="Small" HorizontalOptions="Center" TextColor="Gray"/>
                     </StackLayout>
                 </StackLayout>
                 <BoxView  x:Name="Separator1" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
 
             <ScrollView>
                 <StackLayout>
-                 
+                    <StackLayout x:Name="Stack4" BackgroundColor="{StaticResource ToolbarColor}" HeightRequest="30" HorizontalOptions="FillAndExpand">
+                        <Label Margin="10,5,0,0" Text="{translator:TranslateExtension SettingStackName4}" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
+                    </StackLayout>
+
                     <StackLayout Orientation="Horizontal">
                         <StackLayout Padding="10">
                             <Label Text="{translator:TranslateExtension SettingLanguageLabel}" TextColor="Black" />

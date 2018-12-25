@@ -151,7 +151,7 @@
     <value>Настройки</value>
   </data>
   <data name="SettingStackName1" xml:space="preserve">
-    <value>Общий UI</value>
+    <value>Главная тема</value>
   </data>
   <data name="SettingStackName2" xml:space="preserve">
     <value>Страница со студентами</value>
@@ -218,5 +218,11 @@
   </data>
   <data name="StudentsDetailSubmutButtonText" xml:space="preserve">
     <value>Ссылку (пусто для исп. стандарт.)</value>
+  </data>
+  <data name="SettingStackName4" xml:space="preserve">
+    <value>Базовый интерфейс</value>
+  </data>
+  <data name="SettingUsersInstrc" xml:space="preserve">
+    <value>Тыкните в круг :)</value>
   </data>
 </root>

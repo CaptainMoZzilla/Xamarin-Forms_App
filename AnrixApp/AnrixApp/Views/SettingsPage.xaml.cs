@@ -2,7 +2,6 @@
 using Plugin.Settings;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,11 +22,12 @@ namespace AnrixApp.Views
 		{
 			InitializeComponent ();
             ColorVal = CrossSettings.Current.GetValueOrDefault("ColorVal", 0);
+            ThemeStack.IsVisible = CrossSettings.Current.GetValueOrDefault("IsMainThemeVisible", true);
 
             var gestureREcognizer = new TapGestureRecognizer();
             var gestureREcognizer2 = new TapGestureRecognizer();
             var gestureREcognizer3 = new TapGestureRecognizer();
-
+            var gestureREcognizer4 = new TapGestureRecognizer();
 
             gestureREcognizer.Tapped += (s, e) =>
             {
@@ -50,6 +50,22 @@ namespace AnrixApp.Views
             };
             Frame.GestureRecognizers.Add(gestureREcognizer3);
 
+            gestureREcognizer4.Tapped += (s, e) =>
+            {
+                if (ThemeStack.IsVisible)
+                {
+                    ThemeStack.IsVisible = false;
+                    ThemeIcon.Source = "down_icon.png";
+                }
+                else
+                {
+                    ThemeStack.IsVisible = true;
+                    ThemeIcon.Source = "up_icon.png";
+                }
+                CrossSettings.Current.AddOrUpdateValue("IsMainThemeVisible", ThemeStack.IsVisible);
+            };
+            Stack1.GestureRecognizers.Add(gestureREcognizer4);
+
             ColorList.ItemsSource = ColorsName;
 
             BarColorUpdated += delegate (Color color)
@@ -66,6 +82,7 @@ namespace AnrixApp.Views
                 Stack1.BackgroundColor = color;
                 Stack2.BackgroundColor = color;
                 Stack3.BackgroundColor = color;
+                Stack4.BackgroundColor = color;
             };
             Picker1.ItemsSource = Languages;
             Picker1.SelectedIndexChanged += OnLanguageChanged;
@@ -95,6 +112,7 @@ namespace AnrixApp.Views
             Stack1.BackgroundColor = color;
             Stack2.BackgroundColor = color;
             Stack3.BackgroundColor = color;
+            Stack4.BackgroundColor = color;
         }               
 
         private void Switch_Toggled(object sender, ToggledEventArgs e)

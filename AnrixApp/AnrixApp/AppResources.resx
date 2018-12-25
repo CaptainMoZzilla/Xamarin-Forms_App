@@ -151,7 +151,7 @@
     <value>Settings</value>
   </data>
   <data name="SettingStackName1" xml:space="preserve">
-    <value>Basic UI</value>
+    <value>Main theme</value>
   </data>
   <data name="SettingStackName2" xml:space="preserve">
     <value>Student's page</value>
@@ -218,5 +218,11 @@
   </data>
   <data name="StudentsDetailSubmutButtonText" xml:space="preserve">
     <value>Link (empty to use default)</value>
+  </data>
+  <data name="SettingStackName4" xml:space="preserve">
+    <value>Basic UI</value>
+  </data>
+  <data name="SettingUsersInstrc" xml:space="preserve">
+    <value>Tap to apply</value>
   </data>
 </root>
