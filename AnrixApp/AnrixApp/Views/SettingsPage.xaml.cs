@@ -14,8 +14,8 @@ namespace AnrixApp.Views
         public static event ColorUpdated BarColorUpdated;
 
         private int ColorVal;
-        private List<string> MainColor = new List<string> { "#3f51b5", "#673AB7", "#F44336", "#009688", "#FF5722", "#00BCD4" };
-        private List<string> ColorsName = new List<string> { "Classic", "Deep purple", "Red ", "Teal ", "Deep Orange ", "Cyan" };
+        private List<string> MainColor = new List<string> { "#3F51B5", "#673AB7", "#4CAF50", "#009688", "#E91E63", "#00BCD4" };
+        private List<string> ColorsName = new List<string> { "Indigo", "Deep purple", "Green", "Teal ", "Pink ", "Cyan" };
         private List<string> Languages = new List<string> { "English", "Русский" };
 
 		public SettingsPage ()
