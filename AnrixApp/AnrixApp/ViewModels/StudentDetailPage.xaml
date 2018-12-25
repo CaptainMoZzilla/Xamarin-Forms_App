@@ -105,7 +105,7 @@
                                     </ffimageloading:CachedImage>
                                     <StackLayout Orientation="Vertical">
                                         <Label Text="{Binding Title}" TextColor="Black" 
-                                                 FontSize="Medium" HorizontalOptions="StartAndExpand" />
+                                                 FontSize="Medium" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
