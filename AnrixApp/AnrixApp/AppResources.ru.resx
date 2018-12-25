@@ -223,7 +223,7 @@
     <value>Юзернейм</value>
   </data>
   <data name="SettingBotName1" xml:space="preserve">
-    <value>Введите юзер администратора</value>
+    <value>Юзернейм администратора</value>
   </data>
   <data name="SettingStackName4" xml:space="preserve">
     <value>Базовый интерфейс</value>
