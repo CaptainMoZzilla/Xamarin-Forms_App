@@ -1,7 +1,6 @@
 ﻿using AnrixApp.Models;
 using System;
 using System.IO;
-using Xamarin.Forms;
 
 namespace AnrixApp.Services
 {

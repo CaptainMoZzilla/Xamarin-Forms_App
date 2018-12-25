@@ -2,6 +2,7 @@
 using Plugin.Settings;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,14 +14,20 @@ namespace AnrixApp.Views
         public delegate void ColorUpdated(Color color);
         public static event ColorUpdated BarColorUpdated;
 
-        private List<string> MainColor = new List<string> { "#3f51b5", "#800080", "#fd6571", "#2cb42c", "#5c6298" };
+        private int ColorVal;
+        private List<string> MainColor = new List<string> { "#3f51b5", "#800080", "#fd6571", "#2cb42c", "#5c6298", "#ffb0b0" };
+        private List<string> ColorsName = new List<string> { "Classic", "Blue", "Red", "Cyan", "Green", "Pink" };
         private List<string> Languages = new List<string> { "English", "Русский" };
 
 		public SettingsPage ()
 		{
 			InitializeComponent ();
+            ColorVal = CrossSettings.Current.GetValueOrDefault("ColorVal", 0);
+
             var gestureREcognizer = new TapGestureRecognizer();
             var gestureREcognizer2 = new TapGestureRecognizer();
+            var gestureREcognizer3 = new TapGestureRecognizer();
+
 
             gestureREcognizer.Tapped += (s, e) =>
             {
@@ -36,10 +43,18 @@ namespace AnrixApp.Views
             };
             BotsSettings_Stack.GestureRecognizers.Add(gestureREcognizer2);
 
+            gestureREcognizer3.Tapped += (s,e) => {
+                CrossSettings.Current.AddOrUpdateValue("Color", MainColor[ColorVal]);
+                CrossSettings.Current.AddOrUpdateValue("ColorVal", ColorVal);
+                BarColorUpdated(Color.FromHex(MainColor[ColorVal]));
+            };
+            Frame.GestureRecognizers.Add(gestureREcognizer3);
+
+            ColorList.ItemsSource = ColorsName;
+
             BarColorUpdated += delegate (Color color)
             {
-                FontSlider.ThumbColor = color;
-
+                
                 Separator1.Color = color;
                 Separator2.Color = color;
                 Separator3.Color = color;
@@ -68,8 +83,6 @@ namespace AnrixApp.Views
             Toggle.IsToggled = bool.Parse(CrossSettings.Current.GetValueOrDefault("IsSearchBarisVisible", "false"));
             BotToggle.IsToggled = bool.Parse(CrossSettings.Current.GetValueOrDefault("IsBotEnabled", "false"));
             var color = Color.FromHex(CrossSettings.Current.GetValueOrDefault("Color", "000000"));
-
-            FontSlider.ThumbColor = color;
 
             Separator1.Color = color;
             Separator2.Color = color;
@@ -115,6 +128,12 @@ namespace AnrixApp.Views
                 await ImageService.Instance.InvalidateDiskCacheAsync();
                 ImageService.Instance.InvalidateMemoryCache();
             }
+        }
+
+        private void ColorList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            ColorVal = ColorsName.IndexOf(e.Item as string);
+            Frame.BackgroundColor = (Color.FromHex(MainColor[ColorVal]));
         }
     }
 }
