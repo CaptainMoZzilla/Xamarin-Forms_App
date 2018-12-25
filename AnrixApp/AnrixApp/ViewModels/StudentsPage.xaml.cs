@@ -6,18 +6,19 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.Settings;
 using static AnrixApp.ViewModels.GroupsPage;
+using AnrixApp.Views;
 
 namespace AnrixApp.ViewModels
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StudentsPage : ContentPage
 	{
-        public Group allStudents;
-   
+        public Group allStudents;   
 		public StudentsPage ()
 		{
             InitializeComponent();
             ToolbarItems.Remove(ThirdBarItem);
+            ToolbarItems.Remove(ScheduleItem);
             OnListUpdated += delegate (Faculty faculty)
             {
                 BindingContext = null;
@@ -87,6 +88,13 @@ namespace AnrixApp.ViewModels
             UpdateList(a);
 
             await Navigation.PopAsync();
+        }
+
+        private void ScheduleItem_Clicked(object sender, EventArgs e)
+        {
+
+            Navigation.PushAsync(new SchedulePage(Title));
+
         }
     }
 }

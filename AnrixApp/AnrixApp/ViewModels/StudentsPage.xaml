@@ -8,8 +8,9 @@
              xmlns:translator="clr-namespace:AnrixApp.Services">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="ThirdBarItem" Icon="basket.png" Clicked="ThirdBarItem_Clicked"/>
         <ToolbarItem Icon="filter_icon.png" x:Name="FilterButton"  Clicked="ToolbarItem_Clicked"/>
+        <ToolbarItem x:Name="ScheduleItem" Icon="schedule_icon.png" Clicked="ScheduleItem_Clicked"/>
+        <ToolbarItem x:Name="ThirdBarItem" Icon="basket.png" Clicked="ThirdBarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
