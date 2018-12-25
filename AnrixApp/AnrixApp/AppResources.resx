@@ -219,6 +219,12 @@
   <data name="StudentsDetailSubmutButtonText" xml:space="preserve">
     <value>Link (empty to use default)</value>
   </data>
+  <data name="SettingBotName" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="SettingBotName1" xml:space="preserve">
+    <value>Enter admin's username </value>
+  </data>
   <data name="SettingStackName4" xml:space="preserve">
     <value>Basic UI</value>
   </data>

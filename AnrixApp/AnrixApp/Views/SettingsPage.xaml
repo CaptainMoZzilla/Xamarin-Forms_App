@@ -99,8 +99,8 @@
                     
                         <StackLayout Orientation="Horizontal">
                             <StackLayout Padding="10" >
-                                <Label Text="asdasd" TextColor="Black" />
-                                <Label Text="asdasdasdasdasdasd asd asd " FontSize="Small" TextColor="Gray"/>
+                                <Label Text="{translator:TranslateExtension SettingBotName}" TextColor="Black" />
+                                <Label Text="{translator:TranslateExtension SettingBotName1}" FontSize="Small" TextColor="Gray"/>
                             </StackLayout>
                             <Entry x:Name="AdminNick" TextChanged="AdminNick_TextChanged" Placeholder="Username       " FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                         </StackLayout>
