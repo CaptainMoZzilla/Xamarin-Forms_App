@@ -14,8 +14,8 @@ namespace AnrixApp.Views
         public static event ColorUpdated BarColorUpdated;
 
         private int ColorVal;
-        private List<string> MainColor = new List<string> { "#3f51b5", "#800080", "#fd6571", "#2cb42c", "#5c6298", "#ffb0b0" };
-        private List<string> ColorsName = new List<string> { "Classic", "Blue", "Red", "Cyan", "Green", "Pink" };
+        private List<string> MainColor = new List<string> { "#3f51b5", "#673AB7", "#F44336", "#009688", "#FF5722", "#00BCD4" };
+        private List<string> ColorsName = new List<string> { "Classic", "Deep purple", "Red ", "Teal ", "Deep Orange ", "Cyan" };
         private List<string> Languages = new List<string> { "English", "Русский" };
 
 		public SettingsPage ()
@@ -23,6 +23,10 @@ namespace AnrixApp.Views
 			InitializeComponent ();
             ColorVal = CrossSettings.Current.GetValueOrDefault("ColorVal", 0);
             ThemeStack.IsVisible = CrossSettings.Current.GetValueOrDefault("IsMainThemeVisible", true);
+            if (!ThemeStack.IsVisible)
+                ThemeIcon.Source = "down_icon.png";
+
+
             AdminNick.Text = CrossSettings.Current.GetValueOrDefault("AdminsNick", "Anrix_Official"); 
 
             var gestureREcognizer = new TapGestureRecognizer();
