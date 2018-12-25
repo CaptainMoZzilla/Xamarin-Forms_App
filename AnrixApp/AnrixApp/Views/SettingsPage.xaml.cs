@@ -23,6 +23,7 @@ namespace AnrixApp.Views
 			InitializeComponent ();
             ColorVal = CrossSettings.Current.GetValueOrDefault("ColorVal", 0);
             ThemeStack.IsVisible = CrossSettings.Current.GetValueOrDefault("IsMainThemeVisible", true);
+            AdminNick.Text = CrossSettings.Current.GetValueOrDefault("AdminsNick", "Anrix_Official"); 
 
             var gestureREcognizer = new TapGestureRecognizer();
             var gestureREcognizer2 = new TapGestureRecognizer();
@@ -76,6 +77,7 @@ namespace AnrixApp.Views
                 Separator3.Color = color;
                 Separator4.Color = color;
                 Separator5.Color = color;
+                Separator6.Color = color;
 
                 ClearButton.BackgroundColor = color;
 
@@ -106,6 +108,7 @@ namespace AnrixApp.Views
             Separator3.Color = color;
             Separator4.Color = color;
             Separator5.Color = color;
+            Separator6.Color = color;
 
             ClearButton.BackgroundColor = color;
 
@@ -152,6 +155,11 @@ namespace AnrixApp.Views
         {
             ColorVal = ColorsName.IndexOf(e.Item as string);
             Frame.BackgroundColor = (Color.FromHex(MainColor[ColorVal]));
+        }
+
+        private void AdminNick_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CrossSettings.Current.AddOrUpdateValue("AdminsNick", e.NewTextValue);
         }
     }
 }

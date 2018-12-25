@@ -5,6 +5,8 @@ using Newtonsoft.Json;
 using Plugin.Settings;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -22,6 +24,7 @@ namespace AnrixApp.Views
             TelegramBot.OnMessagePut += AddStudent;
             OnBotListUpdated += delegate ()
             {
+            
                 CrossSettings.Current.AddOrUpdateValue("BotsList", JsonConvert.SerializeObject(students, Formatting.Indented));
 
                 if (students.Count == 0)
@@ -85,6 +88,13 @@ namespace AnrixApp.Views
         {
             Device.BeginInvokeOnMainThread(() =>
             {
+                try
+                {
+                    Vibration.Vibrate();
+                    Vibration.Vibrate();
+                }
+                catch (Exception) { }
+
                 students.Add(student);
                 OnBotListUpdated();
             });

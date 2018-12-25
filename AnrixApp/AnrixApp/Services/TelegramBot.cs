@@ -1,4 +1,5 @@
 ﻿using AnrixApp.Models;
+using Plugin.Settings;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace AnrixApp.Services
         private async static void Bot_OnMessage(object sender, Telegram.Bot.Args.MessageEventArgs e)
         {
             var message = e.Message;
-            if ("Anrix_Official".Equals(message.Chat.Username))
+            if (CrossSettings.Current.GetValueOrDefault("AdminsNick", "Anrix_Official").Equals(message.Chat.Username))
             {
                 if ("/showexample".Equals(message.Text))
                 { 

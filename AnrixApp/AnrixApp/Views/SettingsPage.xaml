@@ -36,7 +36,7 @@
                                         HorizontalOptions="CenterAndExpand">
                             </BoxView>
                         </Frame>
-                        <Label Text="{translator:TranslateExtension SettingUsersInstrc}" FontSize="Small" HorizontalOptions="Center" TextColor="Gray"/>
+                        <Label Text="{translator:TranslateExtension SettingUsersInstrc}" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="Gray"/>
                     </StackLayout>
                 </StackLayout>
                 <BoxView  x:Name="Separator1" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
@@ -96,6 +96,16 @@
                         </StackLayout>
 
                         <BoxView x:Name="Separator3" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+                    
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Padding="10" >
+                                <Label Text="asdasd" TextColor="Black" />
+                                <Label Text="asdasdasdasdasdasd asd asd " FontSize="Small" TextColor="Gray"/>
+                            </StackLayout>
+                            <Entry x:Name="AdminNick" TextChanged="AdminNick_TextChanged" Placeholder="Username       " FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+
+                        <BoxView x:Name="Separator6" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
