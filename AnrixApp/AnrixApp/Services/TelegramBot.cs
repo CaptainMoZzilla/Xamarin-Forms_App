@@ -28,9 +28,9 @@ namespace AnrixApp.Services
                 { 
                     await Bot.SendTextMessageAsync(chatId: message.Chat.Id, 
                         text: $"*{e.Message.Chat.FirstName}*, вот пример анкеты,\nкоторую ты можешь мне отправить:\n" +
-                        $"\n`Бережнов Даниил Олегович`\n" +
+                        $"\n`Бережнов Даниил Евгеньевич`\n" +
                         $"`753503 10.0`\n" +
-                        $"[Ссылка на фотку студента](http://www.god-answers-prayers.com/god_answers_prayers_gallery/img/Jesus_Computer.jpg)",
+                        $"[Ссылка на фотку студента](https://i.imgur.com/OaXanwn.jpg)",
                         parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
                 } else
                 {
