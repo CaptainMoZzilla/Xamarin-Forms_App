@@ -67,7 +67,7 @@
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label TextColor="White" VerticalOptions="Center" FontSize ="Large" Text="{translator:TranslateExtension StudentsMarkLabel}"/>
-                            <Entry x:Name="EditAverageMark" TextColor="White"  VerticalOptions="Center" Keyboard="Numeric" Text="{Binding AverageMark}"/>
+                            <Entry x:Name="EditAverageMark" TextColor="White"  VerticalOptions="Center" Placeholder="    " Keyboard="Numeric" Text="{Binding AverageMark}"/>
                         </StackLayout>
                     </StackLayout>
 

@@ -120,12 +120,22 @@ namespace AnrixApp.ViewModels
                     Animation.Play();
                     ToolbarItems[1].Icon = PencilIconName;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    await DisplayAlert(CurrenLanguage ? "Произошла ошибка!" : "Error occurred!"
-                        , CurrenLanguage ? "Не валидная отметка" : "Invalid mark\n" +
-                        (CurrenLanguage ? $"Информация: {ex.Message}" : $"Info: {ex.Message}")
-                        , "OK");
+                    uint timeout = 50;
+                    await EditAverageMark.TranslateTo(-15, 0, timeout);
+                    await EditAverageMark.TranslateTo(15, 0, timeout);
+                    await EditAverageMark.TranslateTo(-10, 0, timeout);
+                    await EditAverageMark.TranslateTo(10, 0, timeout);
+                    await EditAverageMark.TranslateTo(-5, 0, timeout);
+                    await EditAverageMark.TranslateTo(5, 0, timeout);
+                    EditAverageMark.TranslationX = 0;
+
+                    //DependencyService.Get<Toast>().Show("Toast Message");
+                    //await DisplayAlert(CurrenLanguage ? "Произошла ошибка!" : "Error occurred!"
+                    //    , CurrenLanguage ? "Не валидная отметка" : "Invalid mark\n" +
+                    //    (CurrenLanguage ? $"Информация: {ex.Message}" : $"Info: {ex.Message}")
+                    //    , "OK");
                 }
 
             }
