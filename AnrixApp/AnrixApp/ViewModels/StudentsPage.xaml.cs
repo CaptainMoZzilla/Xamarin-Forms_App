@@ -13,8 +13,9 @@ namespace AnrixApp.ViewModels
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StudentsPage : ContentPage
 	{
-        public Group allStudents;   
-		public StudentsPage ()
+        public Group allStudents;
+        private bool CurrenLanguage = "ru".Equals(CrossSettings.Current.GetValueOrDefault("Language", "en"));
+        public StudentsPage ()
 		{
             InitializeComponent();
             ToolbarItems.Remove(ThirdBarItem);
@@ -47,21 +48,26 @@ namespace AnrixApp.ViewModels
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            var action = await DisplayActionSheet("Sort by", "Back","", "Group [0-9]", "Name [A-Z]", "Surname [A-Z]");
+            var action =  CurrenLanguage ?
+                await DisplayActionSheet("Отсортировать по", "Назад", "", "Группе [0-9]", "Имеми [A-Z]", "Фамилии [A-Z]") :
+                await DisplayActionSheet("Sort by", "Back", "", "Group [0-9]", "Name [A-Z]", "Surname [A-Z]");
 
             if (action != null)
             { 
                 BindingContext = null;
                 switch (action.ToString())
                 {
+                    case "Имеми [A-Z]":
                     case "Name [A-Z]":
                         BindingContext = SortHelper.SortByName(allStudents); ;
                         break;
 
+                    case "Фамилии [A-Z]":
                     case "Surname [A-Z]":
                         BindingContext = SortHelper.SortBySurname(allStudents); ;
                         break;
 
+                    case "Группе [0-9]":
                     case "Group [0-9]":
                         BindingContext = SortHelper.SortByGroup(allStudents); ;
                         break;

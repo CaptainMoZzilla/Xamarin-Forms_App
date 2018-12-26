@@ -51,7 +51,7 @@ namespace AnrixApp.Views
 
                 DependencyService.Get<IMessage>().LongTime(
                    BotToggle.IsToggled ?
-                   (CurrenLanguage ? "Выпускаем кракена" : "Now kraken is free")
+                   (CurrenLanguage ? "Выпускаем Кракена" : "Now kraken is free")
                   : (CurrenLanguage ? "Ну зачем вы так?:(" : "You save the world"));
             };
             BotsSettings_Stack.GestureRecognizers.Add(gestureREcognizer2);
