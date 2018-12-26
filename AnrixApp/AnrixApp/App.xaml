@@ -5,12 +5,9 @@
     
     <Application.Resources>
         <ResourceDictionary>
-            <!--Global Styles-->
-
             <Color x:Key="NavigationPrimary">#3f51b5</Color>
             <Color x:Key="ToolbarColor">#3f51b5</Color>
             <Color x:Key="BackgroundColor">#e8eaf6</Color>
-
         </ResourceDictionary>
     </Application.Resources>
     
