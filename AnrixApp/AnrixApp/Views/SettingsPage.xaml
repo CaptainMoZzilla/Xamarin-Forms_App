@@ -42,8 +42,8 @@
                 <BoxView  x:Name="Separator1" BackgroundColor="{StaticResource ToolbarColor}" Margin="10,0,10,0" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
 
-            <ScrollView>
-                <StackLayout>
+            <ScrollView x:Name="ScrollAll">
+                <StackLayout x:Name="OtherDataStack">
                     <StackLayout x:Name="Stack4" BackgroundColor="{StaticResource ToolbarColor}" HeightRequest="30" HorizontalOptions="FillAndExpand">
                         <Label Margin="10,5,0,0" Text="{translator:TranslateExtension SettingStackName4}" TextColor="White" VerticalOptions="End" HorizontalOptions="Start"/>
                     </StackLayout>

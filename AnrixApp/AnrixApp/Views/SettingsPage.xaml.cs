@@ -15,27 +15,23 @@ namespace AnrixApp.Views
         public static event ColorUpdated BarColorUpdated;
 
         private int ColorVal;
+        private object locker = new object();
         private bool CurrenLanguage = "ru".Equals(CrossSettings.Current.GetValueOrDefault("Language", "en"));
         private List<string> MainColor = new List<string> { "#3F51B5", "#673AB7", "#4CAF50", "#009688", "#E91E63", "#00BCD4" };
         private List<string> ColorsName = new List<string> { "Indigo", "Deep purple", "Green", "Teal ", "Pink ", "Cyan" };
         private List<string> Languages = new List<string> { "English", "Русский" };
-
         
         public SettingsPage ()
 		{
 			InitializeComponent ();
             ColorVal = CrossSettings.Current.GetValueOrDefault("ColorVal", 0);
-            ThemeStack.IsVisible = CrossSettings.Current.GetValueOrDefault("IsMainThemeVisible", true);
-            if (!ThemeStack.IsVisible)
-                ThemeIcon.Source = "down_icon.png";
-
-
-            AdminNick.Text = CrossSettings.Current.GetValueOrDefault("AdminsNick", "Anrix_Official"); 
 
             var gestureREcognizer = new TapGestureRecognizer();
             var gestureREcognizer2 = new TapGestureRecognizer();
             var gestureREcognizer3 = new TapGestureRecognizer();
             var gestureREcognizer4 = new TapGestureRecognizer();
+
+            AdminNick.Text = CrossSettings.Current.GetValueOrDefault("AdminsNick", "Anrix_Official"); 
 
             gestureREcognizer.Tapped += (s, e) =>
             {
@@ -63,19 +59,28 @@ namespace AnrixApp.Views
             };
             Frame.GestureRecognizers.Add(gestureREcognizer3);
 
-            gestureREcognizer4.Tapped += (s, e) =>
+            gestureREcognizer4.Tapped += async (s, e) =>
             {
-                if (ThemeStack.IsVisible)
+                if (!ThemeIcon.Source.ToString().Contains("down_icon.png"))
                 {
-                    ThemeStack.IsVisible = false;
+                    await ThemeStack.TranslateTo(-ThemeStack.Width - 50, 0, 500);
+                    ScrollAll.MinimumHeightRequest += 500;
+                    OtherDataStack.MinimumHeightRequest += 500;
+                    await ScrollAll.TranslateTo(0, -Separator1.Y + 10, 500);
+
                     ThemeIcon.Source = "down_icon.png";
+                    CrossSettings.Current.AddOrUpdateValue("IsMainThemeVisible", false);
                 }
                 else
                 {
-                    ThemeStack.IsVisible = true;
+                    ScrollAll.MinimumHeightRequest -= 500;
+                    OtherDataStack.MinimumHeightRequest -= 500;
+                    await ScrollAll.TranslateTo(0, 0, 500);
+                    await ThemeStack.TranslateTo(Stack1.X, Stack1.Y, 500);
+
                     ThemeIcon.Source = "up_icon.png";
+                    CrossSettings.Current.AddOrUpdateValue("IsMainThemeVisible", true);
                 }
-                CrossSettings.Current.AddOrUpdateValue("IsMainThemeVisible", ThemeStack.IsVisible);
             };
             Stack1.GestureRecognizers.Add(gestureREcognizer4);
 
@@ -108,7 +113,7 @@ namespace AnrixApp.Views
             CrossSettings.Current.AddOrUpdateValue("Language", "English".Equals(Picker1.SelectedItem) ? "en" : "ru");
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
             Toggle.IsToggled = bool.Parse(CrossSettings.Current.GetValueOrDefault("IsSearchBarisVisible", "false"));
@@ -128,6 +133,15 @@ namespace AnrixApp.Views
             Stack2.BackgroundColor = color;
             Stack3.BackgroundColor = color;
             Stack4.BackgroundColor = color;
+
+            if (!CrossSettings.Current.GetValueOrDefault("IsMainThemeVisible", true))
+            {
+                await ThemeStack.TranslateTo(-ThemeStack.Width - 50, 0, 500);
+                ScrollAll.MinimumHeightRequest += 500;
+                OtherDataStack.MinimumHeightRequest += 500;
+                await ScrollAll.TranslateTo(0, -Separator1.Y + 10, 500);
+                ThemeIcon.Source = "down_icon.png";
+            }
         }               
 
         private void Switch_Toggled(object sender, ToggledEventArgs e)
