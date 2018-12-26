@@ -1,4 +1,5 @@
 ﻿using AnrixApp.Models;
+using AnrixApp.Services;
 using Plugin.Settings;
 using System;
 using System.Linq;
@@ -131,11 +132,7 @@ namespace AnrixApp.ViewModels
                     await EditAverageMark.TranslateTo(5, 0, timeout);
                     EditAverageMark.TranslationX = 0;
 
-                    //DependencyService.Get<Toast>().Show("Toast Message");
-                    //await DisplayAlert(CurrenLanguage ? "Произошла ошибка!" : "Error occurred!"
-                    //    , CurrenLanguage ? "Не валидная отметка" : "Invalid mark\n" +
-                    //    (CurrenLanguage ? $"Информация: {ex.Message}" : $"Info: {ex.Message}")
-                    //    , "OK");
+                    DependencyService.Get<IMessage>().LongTime(CurrenLanguage ? "Не валидная отметка" : "Invalid mark");
                 }
 
             }

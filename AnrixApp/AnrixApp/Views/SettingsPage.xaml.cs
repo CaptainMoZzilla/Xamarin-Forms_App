@@ -1,4 +1,5 @@
-﻿using FFImageLoading;
+﻿using AnrixApp.Services;
+using FFImageLoading;
 using Plugin.Settings;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,13 @@ namespace AnrixApp.Views
         public static event ColorUpdated BarColorUpdated;
 
         private int ColorVal;
+        private bool CurrenLanguage = "ru".Equals(CrossSettings.Current.GetValueOrDefault("Language", "en"));
         private List<string> MainColor = new List<string> { "#3F51B5", "#673AB7", "#4CAF50", "#009688", "#E91E63", "#00BCD4" };
         private List<string> ColorsName = new List<string> { "Indigo", "Deep purple", "Green", "Teal ", "Pink ", "Cyan" };
         private List<string> Languages = new List<string> { "English", "Русский" };
 
-		public SettingsPage ()
+        
+        public SettingsPage ()
 		{
 			InitializeComponent ();
             ColorVal = CrossSettings.Current.GetValueOrDefault("ColorVal", 0);
@@ -45,6 +48,11 @@ namespace AnrixApp.Views
             {
                 BotToggle_Toggled(s, new ToggledEventArgs(!BotToggle.IsToggled));
                 BotToggle.IsToggled = !BotToggle.IsToggled;
+
+                DependencyService.Get<IMessage>().LongTime(
+                   BotToggle.IsToggled ?
+                   (CurrenLanguage ? "Выпускаем кракена" : "Now kraken is free")
+                  : (CurrenLanguage ? "Ну зачем вы так?:(" : "You save the world"));
             };
             BotsSettings_Stack.GestureRecognizers.Add(gestureREcognizer2);
 
@@ -136,8 +144,8 @@ namespace AnrixApp.Views
 
         private void BotToggle_Toggled(object sender, ToggledEventArgs e)
         {
-            CrossSettings.Current.AddOrUpdateValue("IsBotEnabled", e.Value.ToString());
-            Services.TelegramBot.TelegramBot_OnRecievingUpdate(e.Value);
+                CrossSettings.Current.AddOrUpdateValue("IsBotEnabled", e.Value.ToString());
+                TelegramBot.TelegramBot_OnRecievingUpdate(e.Value);
         }
 
         private async void ClearButton_Clicked(object sender, EventArgs e)
